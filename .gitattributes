@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2022-2023 Jason Pena <jasonpena@awkless.com>
+# SPDX-License-Identifier: MIT
+
+* text=auto
+
+.gitattributes text
+.gitignore     text
+
+*.md           text diff=markdown
+*.txt          text
+*.cmake        text diff=cmake
+*.yml          text diff=yaml
+*.c            text diff=c
+*.h            text diff=c
