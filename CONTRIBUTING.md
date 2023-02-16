@@ -33,7 +33,27 @@ related concerns, e.g., compromised PGP key, compromised tagged release, etc.
 
 ## Pull Request Style
 
-TODO
+Helpful templates are provided to you for properly formatting your pull
+requests. Understand that this project uses trunk based development. Thus, all
+changes you make must occur separately on an unprotected branch based off of
+main from your fork. Try to keep a linear commit history by using rebase
+merging. Avoid merge commits.
+
+Here some tips for better pull requests:
+
+- Keep pull requests short and simple.
+- Keep pull requests focused on one goal/issue rather than multiple.
+- Break up large scale changes into multiple pull requests.
+- Make sure that your pull requests only last for a couple of days. Avoid long
+  standing pull requests.
+- Use `git fetch --all -p` to get changes from main and then use.
+  `get rebase origin/main` to put your changes over the changes on main keeping
+  a nice linear history.
+- Stash untracked local changes with `git stash -u` and later pop them with
+  `git stash pop`.
+- Label your pull request if possible.
+- If your pull request helps progress a milestone, then label it with that
+  milestone for more attention.
 
 ## Coding Style
 
