@@ -96,8 +96,20 @@ style:
 
 ## Licensing and Copyright
 
-TODO
+This project uses the MIT license for all source code and documentation. Please
+read through the provided [copy][license] of this license to understand your
+rights and whether or not you agree before contributing. Once contributions
+are accepted they will be subject to public record permanently.
+
+This project abides by the [REUSE 3.0][reuse3] specification to determine the
+licensing and copyright of files in the code base. Thus, all files must have the
+proper SPDX copyright and licensing tags at the top always. If you want to
+determine if your current chanes are REUSE compliant, then just use their
+[reuse tool][reuse-tool].
 
 [cc1.0.0]: https://www.conventionalcommits.org/en/v1.0.0/
 [linux-style]: https://www.kernel.org/doc/html/v4.10/process/coding-style.html
 [cmake-style]: https://community.kde.org/Policies/CMake_Coding_Style
+[reuse3]: https://reuse.software/spec/
+[reuse-tool]: https://reuse.software/tutorial/
+[license]: https://github.com/awkless/chip-8/blob/main/LICENSE/MIT.txt
