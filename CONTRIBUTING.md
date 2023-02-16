@@ -13,7 +13,14 @@ _Thank you for taking the time to contribute!_
 
 ## Exected Forms of Contribution
 
-TODO
+This project is open to the following forms of contribution:
+
+- Improvements or fixes to dotfiles.
+- Reporting of bugs.
+- Suggestions for features or improvements.
+- Improvements or fixes to scripts.
+- Improvements or fixes to CI pipeline.
+- Improvements or fixes to documntation.
 
 ## Issue Tracker Submissions
 
