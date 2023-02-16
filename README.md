@@ -57,10 +57,22 @@ You will need the following software:
 
 ## Contribution
 
-TODO
+This project is open to the following forms of contribution:
+
+- Bug reports
+- Feature requests
+- Improvements or fixes to dotfiles
+- Improvements or fixes to scripts
+- Improvements or fixes to CI pipeline
+- Improvements or fixes to documentation
+
+Please follow the guidelines outlined by the provided
+[contribution guideline file][contributing]. Pull requests will not be accepted
+if these guidelines are violated without good reason.
 
 ## License
 
 This project uses the [MIT license][mit] for all source code and documentation.
 
+[contributing]: https://github.com/awkless/dotfiles/blob/main/CONTRIBUTING.md
 [mit]: https://github.com/awkless/dotfiles/blob/main/LICENSE/MIT.txt
