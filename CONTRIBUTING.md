@@ -24,7 +24,12 @@ This project is open to the following forms of contribution:
 
 ## Issue Tracker Submissions
 
-TODO
+The issue tracker of this project is only for bug reports or feature requests.
+Please do not use it for asking questions or help. Please use the provided
+templates when making a submission to the issue tracker. Redirect your questions
+and help to the GitHub discussions section of the project. For more privacy you
+may use @awkless' email \<<jasonpena@awkless.com>\> __especially__ for security
+related concerns, e.g., compromised PGP key, compromised tagged release, etc.
 
 ## Pull Request Style
 
