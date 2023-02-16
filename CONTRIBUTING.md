@@ -74,10 +74,30 @@ you have good reason otherwise.
 
 ## Coding Style
 
-TODO
+This project uses the [Linux Kernel coding style][linux-style] for all C
+source code. Here is a general summary of the style:
+
+- Maximum line width of 80 characters.
+- All indentation must be tabs.
+- Use snake\_case for variable and function naming. Use all uppercase or all
+  lowercase, do not mix casing.
+- Do not use editor modelines.
+
+Finally, for CMake files this project follows the
+[KDE Community's style][cmake-style]. Here is a general summary of the
+style:
+
+- Indentation must be 2 spaces (KDE allows variations of indentation, but this
+  project just sticks with 2 spacess).
+- Maximum line width is 120 (KDE does not specify but CMake code can get very
+  long hence why the massive line width is given).
+- Use all uppercase or all lowercase snake\_case for variables and functions,
+  do not mix them, e.g., Add\_Executable(foo.exe) is not allowed.
 
 ## Licensing and Copyright
 
 TODO
 
 [cc1.0.0]: https://www.conventionalcommits.org/en/v1.0.0/
+[linux-style]: https://www.kernel.org/doc/html/v4.10/process/coding-style.html
+[cmake-style]: https://community.kde.org/Policies/CMake_Coding_Style
