@@ -42,7 +42,18 @@ Chip-8 game using the keyboard controls labeled above.
 
 ## Installation
 
-TODO
+You will need the following software:
+
+- C99 compliant compiler.
+- SDL2 library.
+- CMake [>= 3.12]
+
+```
+# mkdir build && cd build
+# cmake .. -DCMAKE_BUILD_TYPE=Release
+# make
+# sudo make install
+```
 
 ## Contribution
 
