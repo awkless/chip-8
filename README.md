@@ -10,9 +10,35 @@ the baseline features of the Chip-8 system from 1977. This project does not
 aim to be the fastest, nor the most accurate. Instead, the goal was to
 create a simple emulator both in design and maintenance.
 
-## Features
+## Usage
 
-TODO
+Perform the following in the terminal:
+
+```
+# chip-8 <rom>
+```
+
+Where `<rom>` is any proper Chip-8 ROM file that you want to play. This
+emulator uses the following key layout as input:
+
+```
+1 2 3 4
+Q W E R
+A S D F
+Z X C V
+```
+
+which map to these traditional Chip-8 keys:
+
+```
+1 2 3 C
+4 5 6 D
+7 8 9 E
+A 0 B F
+```
+
+When you load a ROM a new window will pop up so you can play your
+Chip-8 game using the keyboard controls labeled above.
 
 ## Installation
 
