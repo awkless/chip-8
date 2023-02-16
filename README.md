@@ -74,5 +74,6 @@ if these guidelines are violated without good reason.
 
 This project uses the [MIT license][mit] for all source code and documentation.
 
-[contributing]: https://github.com/awkless/dotfiles/blob/main/CONTRIBUTING.md
-[mit]: https://github.com/awkless/dotfiles/blob/main/LICENSE/MIT.txt
+[contributing]: https://github.com/awkless/chip-8/blob/main/CONTRIBUTING.md
+[chip-8-wiki]: https://en.wikipedia.org/wiki/CHIP-8
+[mit]: https://github.com/awkless/chip-8/blob/main/LICENSE/MIT.txt
