@@ -3,6 +3,8 @@ SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
 SPDX-License-Identifier: MIT
 -->
 
+[![REUSE status][reuse-badge]][reuse-repo]
+
 # Chip-8 Emulator
 
 This is yet another [Chip-8][chip-8-wiki] emulator project aimed at emulating
@@ -79,6 +81,8 @@ if these guidelines are violated without good reason.
 
 This project uses the [MIT license][mit] for all source code and documentation.
 
+[reuse-badge]: https://api.reuse.software/badge/github.com/fsfe/reuse-tool
+[reuse-repo]: https://api.reuse.software/info/github.com/fsfe/reuse-tool
 [contributing]: https://github.com/awkless/chip-8/blob/main/CONTRIBUTING.md
 [chip-8-wiki]: https://en.wikipedia.org/wiki/CHIP-8
 [mit]: https://github.com/awkless/chip-8/blob/main/LICENSE/MIT.txt
