@@ -10,6 +10,11 @@ the baseline features of the Chip-8 system from 1977. This project does not
 aim to be the fastest, nor the most accurate. Instead, the goal was to
 create a simple emulator both in design and maintenance.
 
+## Project Site
+
+If you want to know about the development of this project then follow this URL
+\<<https://awkless.github.io/chip-8/>\>, which is a simple GitHub pages website.
+
 ## Usage
 
 Perform the following in the terminal:
