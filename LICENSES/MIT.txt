@@ -1,7 +1,7 @@
 MIT License
 
 Copyright (c) 2023 Jason Pena @awkless <jasonpena@awkless.com>
-Copyright (c) 2023 John Cully @WheelyNinja <TODO>
+Copyright (c) 2023 John Cully @WheelyNinja <jcully@nmsu.edu>
 Copyright (c) 2023 Nate Lee @l3naz <nhat15032002@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
