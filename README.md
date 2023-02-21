@@ -53,14 +53,18 @@ You will need the following software:
 
 - C99 compliant compiler.
 - SDL2 library.
-- CMake [>= 3.12]
+- Git [>= 2.20].
+- Posix compliant Make.
+
+After cloning this project, run the following commands at the top level of the
+project:
 
 ```
-# mkdir build && cd build
-# cmake .. -DCMAKE_BUILD_TYPE=Release
 # make
 # sudo make install
 ```
+
+You now have the `chip-8` program installed!
 
 ## Contribution
 
