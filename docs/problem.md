@@ -129,11 +129,30 @@ the [user stories page][stories] for progression notes.
 
 ## 4 System and Non-Functional Requirements
 
-TODO
-
 ### 4.1 External Interface Requirements
 
-TODO
+The Chip-8 project will only have a simple command line interface that
+utilizes POSIX-style option formatting. The user is meant to interact with
+loaded video games through their keyboard with the following layout:
+
+```
+1 2 3 4
+Q W E R
+A S D F
+Z X C V
+```
+
+which map to these traditional Chip-8 keys:
+
+```
+1 2 3 C
+4 5 6 D
+7 8 9 E
+A 0 B F
+```
+
+NF.4.1.1. Implement CLI interface with POSIX-style options.
+NF.4.1.2. Implement keyboard interface as described above.
 
 ### 4.2 Performance Requirements
 
