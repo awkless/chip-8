@@ -78,7 +78,54 @@ packages and libraries to be able to build and install:
 
 ## 3 Functional Requirements
 
-TODO
+These are the functional requirements of the project. You can view
+the [user stories page][stories] for progression notes.
+
+1. Implement the Chip 8 CPU
+    1. Setup general purpose register file.
+    1. Implement timer registers.
+    1. Setup fetch, decode, execute cycle.
+    1. Implement the `0NNN` instruction.
+    1. Implement the `00E0` instruction.
+    1. Implement the `00EE` instruction.
+    1. Implement the `1NNN` instruction.
+    1. Implement the `3XNN` instruction.
+    1. Implement the `4XNN` instruction.
+    1. Implement the `5XY0` instruction.
+    1. Implement the `6XNN` instruction.
+    1. Implement the `7XNN` instruction.
+    1. Implement the `8XY0` instruction.
+    1. Implement the `8XY1` instruction.
+    1. Implement the `8XY2` instruction.
+    1. Implement the `8XY3` instruction.
+    1. Implement the `8XY4` instruction.
+    1. Implement the `8XY5` instruction.
+    1. Implement the `8XY7` instruction.
+    1. Implement the `8XYE` instruction.
+    1. Implement the `9XY0` instruction.
+    1. Implement the `ANNN` instruction.
+    1. Implement the `BNNN` instruction.
+    1. Implement the `CXNN` instruction.
+    1. Implement the `DXYN` instruction.
+    1. Implement the `EX9E` instruction.
+    1. Implement the `EXA1` instruction.
+    1. Implement the `FX07` instruction.
+    1. Implement the `FX0A` instruction.
+    1. Implement the `FX15` instruction.
+    1. Implement the `FX18` instruction.
+    1. Implement the `FX1E` instruction.
+    1. Implement the `FX29` instruction.
+    1. Implement the `FX33` instruction.
+    1. Implement the `FX55` instruction.
+    1. Implement the `FX65` instruction.
+1. Implement video system.
+    1. Sync video drawing with timer registers.
+    1. Implement the two color 64x64 display.
+1. Implement audio system.
+    1. Implement PCM audio emulation.
+    1. Sync audio with timer registers.
+1. Create user interface.
+    1. Setup CLI user interface.
 
 ## 4 System and Non-Functional Requirements
 
