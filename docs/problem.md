@@ -9,7 +9,9 @@ SPDX-License-Identifier: MIT
 
 ### 1.1 Purpose of Product
 
-TODO
+The Chip-8 emulation project aims to properly emulate the Chip-8 architecture
+from the 1970's so that the user can run original ROMs from the system on
+their machine without needing the original hardware.
 
 ### 1.2 Scope of Product
 
