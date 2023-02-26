@@ -49,7 +49,9 @@ TODO
 
 ### 2.3 Product Functions (General)
 
-TODO
+The general functions of the Chip-8 project boils down to accurate CPU, video,
+and audio emulation such that the user can load up a Chip-8 video game ROM
+file and play said ROM through usage of their keyboard.
 
 ### 2.4 User Characteristics and Expectations
 
