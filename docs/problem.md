@@ -195,4 +195,8 @@ NF.4.4.3 No insecure code.
 
 ## 5 Appendices
 
-TODO
+Chip-8 techincal reference:
+
+\<<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>\>
+
+[stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
