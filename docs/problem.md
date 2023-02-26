@@ -176,7 +176,13 @@ NF.4.3.2 Projects emulator core must be decoupled from its user interface.
 
 ### 4.4 Quality Requirements
 
-TODO
+The Chip-8 project's quality is determined by how accurately it can decode
+and interpret original Chip-8 CPU instructions. All video, audio, and CPU
+instruction handling must be done between 60FPS. A special ROM testing suite
+will be used in the regular testing suite to ensure this quality.
+
+NF.4.4.1 Implement the CPU, audio, and video systems of the Chip-8 correctly.
+NF.4.4.2 Integrate standard ROM testing suites into unit testing framework.
 
 ### 4.5 Other Requirements
 
