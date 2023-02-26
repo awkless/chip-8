@@ -186,7 +186,12 @@ NF.4.4.2 Integrate standard ROM testing suites into unit testing framework.
 
 ### 4.5 Other Requirements
 
-TODO
+The Chip-8 project cannot have any segmentation faults, memory leaks, or
+any other pieces of insecure code.
+
+NF.4.4.1 No segmentation faults.
+NF.4.4.2 No memory leaks.
+NF.4.4.3 No insecure code.
 
 ## 5 Appendices
 
