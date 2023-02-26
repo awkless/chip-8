@@ -55,7 +55,9 @@ file and play said ROM through usage of their keyboard.
 
 ### 2.4 User Characteristics and Expectations
 
-TODO
+The user will have the ability to load a Chip-8 video game ROM file and
+interact with said ROM file through their keyboard as if they were using the
+original keypad layout the Chip-8 had in the 1970s.
 
 ### 2.5 Constraints
 
