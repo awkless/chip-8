@@ -156,7 +156,13 @@ NF.4.1.2. Implement keyboard interface as described above.
 
 ### 4.2 Performance Requirements
 
-TODO
+The Chip-8 emulator needs to accurately implement CPU instructions with
+correct timings. The Chip-8 system calculates and renders video and audio
+at 60 frames per second.
+
+NF.4.2.1 All CPU instructions are implemented correctly at 60FPS.
+NF.4.2.2 All video rendering occurs at 60FPS.
+NF.4.2.3 All audio output occurs at 60FPS.
 
 ### 4.3 Design Constraints
 
