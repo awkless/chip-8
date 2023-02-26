@@ -22,7 +22,13 @@ this project just aims to implement the original architecture from the 1970s.
 
 ### 1.3 Acronyms, Abbreviations, Definitions
 
-TODO
+- CPU: centeral processing unit.
+- Emulator: software that allows you to execute programs meant for
+  different computer architectures.
+- Register: fastest unit of memory in a CPU, typically the same size as the data
+  bus or address bus.
+- Register File: A collection of registers that the CPU can use per instruction.
+- Instruction Cycle: The steps the CPU takes to process an instruction.
 
 ### 1.4 References
 
