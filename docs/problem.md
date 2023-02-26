@@ -38,7 +38,10 @@ This simple website contains all references used throughout the project.
 
 ## 2 General Description of Product
 
-TODO
+The Chip-8 project's goal is to implement the CPU architecture, video system,
+and audio system of the Chip-8 system. The goal is to give the user as close
+of an experience to the original Chip-8 through software. This requires
+accurate emulation with correct CPU timings to make this possible.
 
 ### 2.2 Domain Model with Description
 
