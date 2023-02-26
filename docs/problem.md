@@ -45,7 +45,36 @@ accurate emulation with correct CPU timings to make this possible.
 
 ### 2.2 Domain Model with Description
 
-TODO
+![Domain Model][domain-img]
+
+The above image is the Chip-8 project's domain model. There are five simple
+components that make up the application: CPU, Video, Keyboard, Audio, and UI.
+The dotted line indicates that the CPU, Video, Keyboard, and Audio components
+are apart of the application's backend. The UI is considered the frontend.
+The purpose of this is to decouple the core emulator from the UI to allow
+future updates or iterations of the project to more easily add their own
+user interfaces without having to modify the backend.
+
+The CPU is the core component that allows the emulator to function. It is
+responsible for processing all data given from the Video, Audio, and Keyboard
+components. The CPU also sends out data to the Video and Audio components to
+either be rendered, or outputted through PCM. The CPU will also be responsible
+for correct timing in the system.
+
+The Keyboard component is the simplest since all it does is give the CPU user
+input to process from the keyboard.
+
+The Video component is responsible for correctly rendering any pixel data
+the CPU gave it into a 64x64 two pixel (traditionally black and white) screen.
+
+The Audio component performs PCM processing and outputs any sound data given
+to it by the CPU.
+
+Finally, the UI (User Interface) component bundles all video data from the
+Video component and audio data from the Audio component into a common
+interface that the user is meant to interact with. This UI can be a simple
+command-line interface or a graphical user interface. For now, the Chip-8
+project will focus on a command-line interface to reduce workload.
 
 ### 2.3 Product Functions (General)
 
@@ -200,3 +229,4 @@ Chip-8 techincal reference:
 \<<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>\>
 
 [stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
+[model-img]: https://github.com/awkless/chip-8/blob/main/docs/res/DomainModel.png
