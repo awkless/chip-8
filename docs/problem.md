@@ -68,7 +68,13 @@ in the SUPER CHIP-8 system.
 
 ### 2.6 Assumptions and Dependencies
 
-TODO
+The Chip-8 project requires that the user have the following software
+packages and libraries to be able to build and install:
+
+- SDL2 library.
+- Standard C compiler like GCC or any equivalent.
+- Git version control system.
+- Make program like GNU Make or any equivalent.
 
 ## 3 Functional Requirements
 
