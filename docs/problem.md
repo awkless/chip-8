@@ -15,7 +15,10 @@ their machine without needing the original hardware.
 
 ### 1.2 Scope of Product
 
-TODO
+The Chip-8 project focuses on implementing the original Chip-8 system
+without any extensions. Chip-8 has existed for a long time and has many
+variations and extentions like SUPER CHIP-8. However, to keep things simple
+this project just aims to implement the original architecture from the 1970s.
 
 ### 1.3 Acronyms, Abbreviations, Definitions
 
