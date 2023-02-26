@@ -61,7 +61,10 @@ original keypad layout the Chip-8 had in the 1970s.
 
 ### 2.5 Constraints
 
-TODO
+The Chip-8 project will only be available on Unix-like distributions, and
+will only emluate the original Chip-8 system. This means that the basic
+Chip-8 features will be provided without any extensions like the ones found
+in the SUPER CHIP-8 system.
 
 ### 2.6 Assumptions and Dependencies
 
