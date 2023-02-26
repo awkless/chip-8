@@ -166,7 +166,13 @@ NF.4.2.3 All audio output occurs at 60FPS.
 
 ### 4.3 Design Constraints
 
-TODO
+The Chip-8 project aims to have its core emulation capabilities be
+decoupled from its user interface. This will allow future updates or iterations
+of the project to implement their own user interfaces without needing to
+modify the core capabilities of the project.
+
+NF.4.3.1 Project must be written in pure C99 without extensions.
+NF.4.3.2 Projects emulator core must be decoupled from its user interface.
 
 ### 4.4 Quality Requirements
 
