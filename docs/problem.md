@@ -26,7 +26,9 @@ TODO
 
 ### 1.4 References
 
-TODO
+This simple website contains all references used throughout the project.
+
+\<<https://chip-8.github.io/links/>\>
 
 ## 2 General Description of Product
 
