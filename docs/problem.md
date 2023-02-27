@@ -229,4 +229,4 @@ Chip-8 techincal reference:
 \<<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>\>
 
 [stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
-[model-img]: https://github.com/awkless/chip-8/blob/docs/problem_statement/docs/res/DomainModel.png
+[model-img]: https://github.com/awkless/chip-8/blob/main/docs/res/DomainModel.png
