@@ -5,7 +5,9 @@ SPDX-License-Identifier: MIT
 
 # [Problem Statement]
 
-TODO
+Discuss what the Chip-8 project is trying to achieve and what problems it is
+trying to solve. This statement lays down the goals and expectations of the
+project.
 
 # [User Stories]
 
@@ -27,9 +29,9 @@ TODO
 
 TODO
 
-[Problem Statement]: https://github.com/awkless/chip-8/blob/main/docs/problem.md
-[User Stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
-[Requirements]: https://github.com/awkless/chip-8/blob/main/docs/requirements.md
-[architecture]: https://github.com/awkless/chip-8/blob/main/docs/architecture.md
-[Design Document]: https://github.com/awkless/chip-8/blob/main/docs/design.md
-[Test Report]: https://github.com/awkless/chip-8/blob/main/docs/testreport.md
+[Problem Statement]: https://awkless.github.io/chip-8/problem
+[User Stories]: https://awkless.github.io/chip-8/userstories
+[Requirements]: https://awkless.github.io/chip-8/requirements
+[Architecture]: https://awkless.github.io/chip-8/architecture
+[Design Document]: https://awkless.github.io/chip-8/design
+[Test Report]: https://awkless.github.io/chip-8/testreport
