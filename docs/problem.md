@@ -34,7 +34,7 @@ this project just aims to implement the original architecture from the 1970s.
 
 This simple website contains all references used throughout the project.
 
-\<<https://chip-8.github.io/links/>\>
+<https://chip-8.github.io/links/>
 
 ## 2 General Description of Product
 
@@ -181,6 +181,7 @@ A 0 B F
 ```
 
 NF.4.1.1. Implement CLI interface with POSIX-style options.
+
 NF.4.1.2. Implement keyboard interface as described above.
 
 ### 4.2 Performance Requirements
@@ -190,7 +191,9 @@ correct timings. The Chip-8 system calculates and renders video and audio
 at 60 frames per second.
 
 NF.4.2.1 All CPU instructions are implemented correctly at 60FPS.
+
 NF.4.2.2 All video rendering occurs at 60FPS.
+
 NF.4.2.3 All audio output occurs at 60FPS.
 
 ### 4.3 Design Constraints
@@ -201,6 +204,7 @@ of the project to implement their own user interfaces without needing to
 modify the core capabilities of the project.
 
 NF.4.3.1 Project must be written in pure C99 without extensions.
+
 NF.4.3.2 Projects emulator core must be decoupled from its user interface.
 
 ### 4.4 Quality Requirements
@@ -211,6 +215,7 @@ instruction handling must be done between 60FPS. A special ROM testing suite
 will be used in the regular testing suite to ensure this quality.
 
 NF.4.4.1 Implement the CPU, audio, and video systems of the Chip-8 correctly.
+
 NF.4.4.2 Integrate standard ROM testing suites into unit testing framework.
 
 ### 4.5 Other Requirements
@@ -219,14 +224,16 @@ The Chip-8 project cannot have any segmentation faults, memory leaks, or
 any other pieces of insecure code.
 
 NF.4.4.1 No segmentation faults.
+
 NF.4.4.2 No memory leaks.
+
 NF.4.4.3 No insecure code.
 
 ## 5 Appendices
 
 Chip-8 techincal reference:
 
-\<<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>\>
+<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>
 
 [stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
 [model-img]: https://github.com/awkless/chip-8/blob/main/docs/res/DomainModel.png
