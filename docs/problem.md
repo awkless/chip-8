@@ -45,7 +45,7 @@ accurate emulation with correct CPU timings to make this possible.
 
 ### 2.2 Domain Model with Description
 
-![Domain Model][domain-img]
+![Domain Model][model-img]
 
 The above image is the Chip-8 project's domain model. There are five simple
 components that make up the application: CPU, Video, Keyboard, Audio, and UI.
@@ -229,4 +229,4 @@ Chip-8 techincal reference:
 \<<https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference>\>
 
 [stories]: https://github.com/awkless/chip-8/blob/main/docs/userstories.md
-[model-img]: https://github.com/awkless/chip-8/blob/main/docs/res/DomainModel.png
+[model-img]: https://github.com/awkless/chip-8/blob/docs/problem_statement/docs/res/DomainModel.png
