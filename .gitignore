@@ -1,4 +1,11 @@
 # SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
 # SPDX-License-Identifier: MIT
 
-/build
+*.o
+src/*.o
+src/utils/*.o
+src/core/*.o
+src/ui/*.o
+test/*.o
+test/test_*
+chip-8
