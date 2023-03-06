@@ -19,4 +19,21 @@
  */
 #define chip8_arrsize(arr) ((sizeof arr) / (sizeof *arr))
 
+/**
+ * @brief Helper to read binary rom data into a buffer.
+ *
+ * @pre @path MUST NOT be NULL.
+ * @pre @path MUST point to a real file path.
+ * @pre @buffer MUST be NULL (uninitialized).
+ * @pre @size MUST NOT be NULL.
+ * @post @buffer WILL be filled with binary data.
+ * @post @size WILL house the size of the rom in bytes.
+ *
+ * @param[in] path Path to file to open.
+ * @param[in/out] buffer Binary buffer to read rom data into.
+ * @param[in/out] size Size of rom in bytes.
+ * @return 0 (@CHIP8_EOK) for success or @chip8_error code for failure.
+ */
+chip8_error chip8_readrom(const char *path, uint8_t **buffer, size_t *size);
+
 #endif /* CHIP8_UTILS_H */
