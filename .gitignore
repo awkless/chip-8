@@ -7,6 +7,7 @@
 # Ignore test object files and executables...
 /test/*
 !/test/*.*
+!/test/roms/
 /test/**/*.o
 
 # Ignore generated documentation...
