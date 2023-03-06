@@ -12,3 +12,5 @@
 *.yml          text diff=yaml
 *.c            text diff=c
 *.h            text diff=c
+*.csv          text
+*.sh           text
