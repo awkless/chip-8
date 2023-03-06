@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 # chip-8 version...
-VERSION = 0.0.0
+VERSION = 0.0.5
 
 # Paths...
 PREFIX = /usr/local
@@ -10,7 +10,7 @@ MANPREFIX = $(PREFIX)/share/man
 
 # Libraries and includes...
 LIBS = -lSDL2
-INCS = -Iinclude/
+INCS = -Isrc/
 
 # Flags...
 CPPFLAGS = -D_DEFAULT_SOURCE \
