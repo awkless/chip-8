@@ -44,6 +44,10 @@ test: options $(TEST_OBJS) $(TEST_BINS)
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+# Generate source code doucmentation with Doxygen...
+docs: all
+	doxygen docs/doxyfile
+
 # Installation targets...
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
@@ -55,7 +59,7 @@ uninstall:
 
 # Clean up...
 clean:
-	@rm -rfv src/*.o src/utils/*.o test/*.o $(TEST_BINS) chip-8
+	@rm -rfv docs/doxygen src/*.o src/utils/*.o test/*.o $(TEST_BINS) chip-8
 
 # Avoid name conflicts...
 .PHONEY: all clean install uninstall options chip-8
