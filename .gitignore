@@ -1,11 +1,13 @@
 # SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
 # SPDX-License-Identifier: MIT
 
-*.o
-src/*.o
-src/utils/*.o
-src/core/*.o
-src/ui/*.o
-test/*.o
-test/test_*
+# Ignore source object files...
+/src/**/*.o
+
+# Ignore test object files and executables...
+/test/*
+!/test/*.*
+/test/**/*.o
+
+# Ignore chip-8 executables...
 chip-8
