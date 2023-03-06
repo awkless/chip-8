@@ -1,5 +1,8 @@
-/* SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
+/**
+ * SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
  * SPDX-License-Identifier: MIT
+ *
+ * @file error.h
  */
 
 #ifndef CHIP8_UTILS_ERROR_H

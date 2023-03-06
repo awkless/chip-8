@@ -9,7 +9,7 @@
 /**
  * @brief Starting point of CHIP-8 emulator.
  *
- * @return 0 for success, or some @chip8_error code to indicate failure.
+ * @return 0 for success, or some @p chip8_error code to indicate failure.
  */
 int main(void)
 {
