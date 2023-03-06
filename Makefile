@@ -3,21 +3,18 @@
 
 include config.mk
 
-# Core emulation source code...
-CORE_SRCS = src/utils/error.c \
-	    src/core/cpu.c
-CORE_OBJS = $(CORE_SRCS:.c=.o)
-
-# Binary source code...
-BIN_SRCS  = $(CORE_SRCS) \
-	    src/main.c
-BIN_OBJS  = $(BIN_SRCS:.c=.o)
+# CHIP-8 source code...
+BIN_SRCS = src/utils/error.c \
+           src/utils/auxfun.c \
+           src/main.c
+BIN_OBJS = $(BIN_SRCS:.c=.o)
 
 # Unit test source code...
-TEST_SRCS = test/test_error.c \
-	    test/test_cpu.c
-TAP = test/tap.c
-TEST_BINS = $(TEST_SRCS:.c=)
+TEST_SRCS  = $(BIN_SRCS:src/main.c=test/tap.c)
+TEST_OBJS  = $(TEST_SRCS:.c=.o)
+TEST_UNITS = test/test_error.c  \
+	     test/test_auxfun.c
+TEST_BINS  = $(TEST_UNITS:.c=)
 
 # Default target...
 all: options chip-8
@@ -35,14 +32,13 @@ chip-8: $(BIN_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 # Execute unit tests...
-test: options $(CORE_OBJS) $(TEST_BINS)
+test: options $(TEST_OBJS) $(TEST_BINS)
 	@printf "\nTest output:\n"
-	./test/test_error
-	./test/test_cpu
+	@./test/run_tests.sh
 
 # Generate test executables...
 .c:
-	$(CC) $(CFLAGS) $(TAP) $< $(CORE_OBJS) -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $< $(TEST_OBJS) -o $@ $(LDFLAGS)
 
 # Generate object files...
 .c.o:
@@ -55,11 +51,11 @@ install: all
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/chip-8
 
 uninstall:
-	rm -fv $(DESTDIR)$(PREFIX)/bin/chip-8
+	@rm -fv $(DESTDIR)$(PREFIX)/bin/chip-8
 
 # Clean up...
 clean:
-	rm -rfv src/*.o src/utils/*.o src/core/*.o $(TEST_BINS) chip-8
+	@rm -rfv src/*.o src/utils/*.o test/*.o $(TEST_BINS) chip-8
 
 # Avoid name conflicts...
 .PHONEY: all clean install uninstall options chip-8
