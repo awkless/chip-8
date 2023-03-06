@@ -9,5 +9,8 @@
 !/test/*.*
 /test/**/*.o
 
+# Ignore generated documentation...
+/docs/doxygen/*
+
 # Ignore chip-8 executables...
 chip-8
