@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: chip-8
+Upstream-Contact: Jason Pena <jasonpena@awkless.com>
+Source: https://github.com/awkless/chip-8
+
+Files: test/roms/*
+Copyright: 2023 Jason Pena
+License: MIT
