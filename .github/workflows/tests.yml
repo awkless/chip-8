@@ -1,0 +1,18 @@
+
+# SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
+# SPDX-License-Identifier: MIT
+
+name: Execute Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get SDL2
+      run: sudo apt-get install libsdl2-dev
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    - name: Run Tests
+      run: make test
