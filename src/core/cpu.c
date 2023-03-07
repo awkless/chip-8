@@ -193,3 +193,8 @@ chip8_error chip8_cpu_cycle(chip8_cpu **cpu)
 
 	return flag;
 }
+
+void chip8_cpu_free(chip8_cpu **cpu)
+{
+	free(*cpu);
+}
