@@ -6,6 +6,7 @@ include config.mk
 # CHIP-8 source code...
 BIN_SRCS = src/utils/error.c \
            src/utils/auxfun.c \
+	   src/core/cpu.c \
            src/main.c
 BIN_OBJS = $(BIN_SRCS:.c=.o)
 
@@ -13,7 +14,8 @@ BIN_OBJS = $(BIN_SRCS:.c=.o)
 TEST_SRCS  = $(BIN_SRCS:src/main.c=test/tap.c)
 TEST_OBJS  = $(TEST_SRCS:.c=.o)
 TEST_UNITS = test/test_error.c  \
-	     test/test_auxfun.c
+	     test/test_auxfun.c \
+	     test/test_cpu.c
 TEST_BINS  = $(TEST_UNITS:.c=)
 
 # Default target...
