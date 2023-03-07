@@ -1,3 +1,7 @@
+/* SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <stdint.h>
 #include <stdlib.h>
 
