@@ -72,7 +72,8 @@ static void test_chip8_readrom(void)
 	       "chip8_readrom() counts binary file size correctly");
 	cmp_mem(buffer, EXPECTED_ROM_DATA, size,
 		"chip8_readrom() reads binary files correctly)");
-
+	free(buffer);
+	buffer = NULL;
 }
 
 /*
