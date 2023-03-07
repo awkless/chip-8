@@ -15,7 +15,8 @@ static const char *const ERROR_MESSAGE[] = {
 	[CHIP8_EINVAL] = "invalid argument",
 	[CHIP8_ENOMEM] = "no memory",
 	[CHIP8_ENOFILE] = "no such file exists",
-	[CHIP8_EBIGFILE] = "file is too big to load"
+	[CHIP8_EBIGFILE] = "file is too big to load",
+	[CHIP8_EBADOP] = "encountered bad opcode during cpu cycle"
 };
 
 void chip8_die(chip8_error code)
