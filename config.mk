@@ -10,16 +10,18 @@ MANPREFIX = $(PREFIX)/share/man
 
 # Libraries and includes...
 LIBS = -lSDL2
-INCS = -Isrc/
+INCS = -I/usr/include/SDL2 -Isrc/
 
 # Flags...
 CPPFLAGS = -D_DEFAULT_SOURCE \
 	   -D_BSD_SOURCE \
 	   -D_POSIX_C_SOURCE=200809L \
+	   -D_REENTRANT \
 	   -DVERSION=\"$(VERSION)\"
 CFLAGS   = -std=c99 \
 	   -pedantic \
 	   -Wall \
+	   -g \
 	   -Os \
 	   $(INCS) \
 	   $(CPPFLAGS)
