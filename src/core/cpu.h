@@ -29,4 +29,17 @@ typedef struct {
 	uint16_t pc;                      /**< 8-bit program counter. */
 } chip8_cpu;
 
+/**
+ * @brief Create a new CHIP-8 CPU with loaded ROM data.
+ *
+ * @pre #file cannot be NULL.
+ * @post #cpu context will be initialized with zeroed data.
+ * @post Do not forget to free the cpu context with #chip8_cpu_free().
+ *
+ * @param[in,out] cpu CHIP-8 CPU context to initialize.
+ * @param[in] file ROM file to be loaded.
+ * @return 0 (#CHIP8_EOK) for success or #chip8_error code for failure.
+ */
+chip8_error chip8_cpu_init(chip8_cpu **cpu, const char *file);
+
 #endif /* CHIP8_CORE_CPU */
