@@ -55,4 +55,15 @@ chip8_error chip8_cpu_init(chip8_cpu **cpu, const char *file);
  */
 chip8_error chip8_cpu_reset(chip8_cpu **cpu);
 
+
+/**
+ * @brief Execute a CHIP-8 CPU cycle.
+ *
+ * @pre #cpu must be initialized with #chip8_cpu_init() beforehand.
+ * @post #cpu state will be updated by whatever instruction was executed.
+ *
+ * @param[in,out] cpu CHIP-8 CPU context to execute cycle from.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_cpu_cycle(chip8_cpu **cpu);
 #endif /* CHIP8_CORE_CPU */
