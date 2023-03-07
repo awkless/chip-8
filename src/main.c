@@ -2,9 +2,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdbool.h>
+
+#include "SDL.h"
+#include "utils/error.h"
+#include "core/cpu.h"
 
 /**
  * @brief Starting point of CHIP-8 emulator.
@@ -35,6 +38,7 @@ int main(void)
 		}
 		SDL_RenderPresent(rend);
 	}
+	SDL_DestroyRenderer(rend);
 	SDL_DestroyWindow(win);
 	SDL_Quit();
 	return 0;
