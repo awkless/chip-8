@@ -17,6 +17,7 @@ typedef enum {
 	CHIP8_ENOMEM,   /**< No memory. */
 	CHIP8_ENOFILE,  /**< No such file exists. */
 	CHIP8_EBIGFILE, /**< File is to big to load. */
+	CHIP8_EBADOP,   /**< CPU encounted bad opcode. */
 	CHIP8_ECOUNT	/**< Error code count INTERAL USE ONLY!. */
 } chip8_error;
 
