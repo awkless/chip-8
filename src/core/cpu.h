@@ -15,4 +15,18 @@
 #define CHIP8_ROM_LIMIT  0xFFF  /**< End of code segement in CHIP-8. */
 #define CHIP8_VREGS      0xF    /**< Amount of registers in CHIP-8. */
 
+/**
+ * @brief Representation of CHIP-8 cpu.
+ */
+typedef struct {
+	uint8_t memory[CHIP8_RAM_SIZE];   /**< 4KiB memory space. */
+	uint8_t v[CHIP8_VREGS];           /**< 16 8-bit data registers. */
+	uint8_t dt;                       /**< 8-bit delay timer. */
+	uint8_t st;                       /**< 8-bit sound timer. */
+	uint16_t stack[CHIP8_STACK_SIZE]; /**< 8-bit stack */
+	uint16_t sp;                      /**< 8-bit stack pointer. */
+	uint16_t i;                       /**< 8-bit index register. */
+	uint16_t pc;                      /**< 8-bit program counter. */
+} chip8_cpu;
+
 #endif /* CHIP8_CORE_CPU */
