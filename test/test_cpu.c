@@ -30,6 +30,18 @@ static const uint8_t EXPECTED_FONTMAP[] = {
 };
 
 /*
+ * Test chip8_cpu_reset().
+ *
+ * TEST TYPES:
+ *   1. chip8_cpu_reset catches invalid arguments.
+ */
+static void test_chip8_cpu_reset(void)
+{
+	cmp_ok(chip8_cpu_reset(NULL), "==", CHIP8_EINVAL,
+	       "chip8_cpu_reset() catches invalid arguments");
+}
+
+/*
  * Test chip8_cpu_init().
  *
  * TEST TYPES:
@@ -75,6 +87,7 @@ static void test_chip8_cpu_init(void)
 int main(void)
 {
 	plan(TEST_COUNT);
+	test_chip8_cpu_reset();
 	test_chip8_cpu_init();
 	done_testing();
 }
