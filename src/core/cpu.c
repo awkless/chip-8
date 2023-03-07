@@ -48,6 +48,46 @@ static void chip8_cpu_raminit(chip8_cpu **cpu)
 	memcpy((*cpu)->memory, font_map, chip8_arrsize(font_map));
 }
 
+chip8_error chip8_cpu_init(chip8_cpu **cpu, const char *file)
+{
+	chip8_error flag = CHIP8_EOK;
+	size_t romlen = 0;
+	uint8_t *buffer = NULL;
+
+	if (!file)
+		return CHIP8_EINVAL;
+
+	*cpu = malloc(sizeof **cpu);
+	if (!*cpu)
+		return CHIP8_ENOMEM;
+
+	flag = chip8_cpu_reset(cpu);
+	if (flag != CHIP8_EOK) {
+		goto out_cpu;
+	}
+
+	chip8_cpu_raminit(cpu);
+	flag = chip8_readrom(file, &buffer, &romlen);
+	if (flag != CHIP8_EOK)
+		goto out_cpu;
+
+	if (romlen > CHIP8_ROM_LIMIT) {
+		flag = CHIP8_EBIGFILE;
+		goto out_cpu;
+	}
+
+	memcpy((*cpu)->memory + CHIP8_ROM_INIT, buffer, romlen);
+	goto out_buffer;
+
+out_cpu:
+	chip8_cpu_free(cpu);
+	cpu = NULL;
+out_buffer:
+	free(buffer);
+	buffer = NULL;
+	return flag;
+}
+
 chip8_error chip8_cpu_reset(chip8_cpu **cpu)
 {
 	if (!cpu)
