@@ -47,3 +47,19 @@ static void chip8_cpu_raminit(chip8_cpu **cpu)
 	memset((*cpu)->memory, 0, sizeof *((*cpu)->memory) * CHIP8_RAM_SIZE);
 	memcpy((*cpu)->memory, font_map, chip8_arrsize(font_map));
 }
+
+chip8_error chip8_cpu_reset(chip8_cpu **cpu)
+{
+	if (!cpu)
+		return CHIP8_EINVAL;
+
+	memset((*cpu)->v, 0, sizeof *((*cpu)->v) * CHIP8_VREGS);
+	memset((*cpu)->stack, 0, sizeof *((*cpu)->stack) * CHIP8_STACK_SIZE);
+	(*cpu)->dt = 0;
+	(*cpu)->st = 0;
+	(*cpu)->sp = 0;
+	(*cpu)->i  = 0;
+	(*cpu)->pc = CHIP8_ROM_INIT;
+
+	return CHIP8_EOK;
+}
