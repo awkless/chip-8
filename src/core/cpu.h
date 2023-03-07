@@ -66,4 +66,14 @@ chip8_error chip8_cpu_reset(chip8_cpu **cpu);
  * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
  */
 chip8_error chip8_cpu_cycle(chip8_cpu **cpu);
+
+/**
+ * @brief Free CHIP-8 CPU context back to system.
+ *
+ * @pre #cpu must have been initialized with #chip8_cpu_init() beforehand.
+ *
+ * @param[in,out] cpu CHIP-8 cpu context to be freed.
+ */
+void chip8_cpu_free(chip8_cpu **cpu);
+
 #endif /* CHIP8_CORE_CPU */
