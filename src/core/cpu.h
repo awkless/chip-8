@@ -42,4 +42,17 @@ typedef struct {
  */
 chip8_error chip8_cpu_init(chip8_cpu **cpu, const char *file);
 
+/**
+ * @brief Reset CHIP-8 CPU.
+ *
+ * @note Does not reset RAM.
+ *
+ * @pre #cpu must be initialized with #chip8_cpu_init() beforehand.
+ * @post #cpu state will be reset.
+ *
+ * @param[in,out] cpu CHIP-8 CPU context to reset.
+ * @return 0 (#CHIP_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_cpu_reset(chip8_cpu **cpu);
+
 #endif /* CHIP8_CORE_CPU */
