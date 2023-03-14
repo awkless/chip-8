@@ -58,3 +58,20 @@ chip8_error chip8_keypad_clear(chip8_keypad *keypad)
 	memset(keypad->keys, CHIP8_KEY_UP, CHIP8_KEYPAD_SIZE);
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_setkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state state)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+
+	if (key >= CHIP8_KEYPAD_SIZE)
+		return CHIP8_EINVAL;
+
+	keypad->keys[key] = state;
+	if ((keypad->states) != NULL && (state != CHIP8_KEY_UP)) {
+		*(keypad->states) = key;
+		keypad->states = NULL;
+	}
+
+	return CHIP8_EOK;
+}
