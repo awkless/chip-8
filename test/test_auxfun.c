@@ -47,10 +47,11 @@ static void test_chip8_arrsize(void)
  * TEST TYPES:
  *   1. chip8_readrom() catches NULL file path.
  *   2. chip8_readrom() catches non-existant file path.
- *   3. chip8_readrom() catches NULL size parameter.
- *   4. chip8_readrom() returns no errors for opening a binary file.
- *   5. chip8_readrom() counts binary file size correctly in bytes.
- *   6. chip8_readrom() reads binary files correctly.
+ *   3. chip8_readrom() catches NULL buffer.
+ *   4. chip8_readrom() catches NULL size parameter.
+ *   5. chip8_readrom() returns no errors for opening a binary file.
+ *   6. chip8_readrom() counts binary file size correctly in bytes.
+ *   7. chip8_readrom() reads binary files correctly.
  */
 static void test_chip8_readrom(void)
 {
@@ -60,10 +61,12 @@ static void test_chip8_readrom(void)
 	chip8_error code = 0;
 	cmp_ok(chip8_readrom(NULL, &buffer, &size), "==", CHIP8_EINVAL,
 	       "chip8_readrom() catches NULL file path");
-	cmp_ok(chip8_readrom("badrom.ch8", &buffer, &size), "==", CHIP8_ENOFILE,
-	       "chip8_readrom() catches non-existant file path");
 	cmp_ok(chip8_readrom(path, &buffer, NULL), "==", CHIP8_EINVAL,
 	       "chip8_readrom() catches NULL buffer size variable");
+	cmp_ok(chip8_readrom(path, NULL, &size), "==", CHIP8_EINVAL,
+	       "chip8_readrom() catches NULL buffer variable");
+	cmp_ok(chip8_readrom("badrom.ch8", &buffer, &size), "==", CHIP8_ENOFILE,
+	       "chip8_readrom() catches non-existant file path");
 
 	code = chip8_readrom(path, &buffer, &size);
 	cmp_ok(code, "==", CHIP8_EOK,
@@ -81,7 +84,7 @@ static void test_chip8_readrom(void)
  */
 int main(void)
 {
-	plan(7);
+	plan(8);
 	test_chip8_arrsize();
 	test_chip8_readrom();
 	done_testing();
