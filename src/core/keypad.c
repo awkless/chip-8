@@ -75,3 +75,18 @@ chip8_error chip8_keypad_setkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_
 
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_getkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state *out)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+
+	if (key >= CHIP8_KEYPAD_SIZE)
+		return CHIP8_EINVAL;
+
+	if (out == NULL)
+		return CHIP8_EINVAL;
+
+	*out = keypad->keys[key];
+	return CHIP8_EOK;
+}
