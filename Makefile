@@ -3,6 +3,9 @@
 
 include config.mk
 
+# Uncomment for debug tracing...
+DEBUG = -DDEBUG_TRACE
+
 # CHIP-8 source code...
 BIN_SRCS = src/utils/error.c \
            src/utils/auxfun.c \
@@ -31,20 +34,22 @@ options:
 
 # Build chip-8 binary...
 chip-8: $(BIN_OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(DEBUG) -o $@ $^ $(LDFLAGS)
 
 # Execute unit tests...
 test: options $(TEST_OBJS) $(TEST_BINS)
 	@printf "\nTest output:\n"
-	@./test/run_tests.sh
+	./test/test_error
+	./test/test_auxfun
+	./test/test_cpu
 
 # Generate test executables...
 .c:
-	$(CC) $(CFLAGS) $< $(TEST_OBJS) -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(DEBUG) $< $(TEST_OBJS) -o $@ $(LDFLAGS)
 
 # Generate object files...
 .c.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(DEBUG) -c -o $@ $<
 
 # Generate source code doucmentation with Doxygen...
 docs: all
