@@ -80,4 +80,19 @@ chip8_error chip8_keypad_clear(chip8_keypad *keypad);
  */
 chip8_error chip8_keypad_setkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state state);
 
+/**
+ * @brief Get key information from keypad.
+ *
+ * @pre #keypad cannot be NULL.
+ * @pre #key cannot be larger that #CHIP8_KEYPAD_SIZE.
+ * @pre #out cannot be NULL.
+ * @post #out will contain the current state of target #key.
+ *
+ * @param[in,out] keypad Keypad to get key from.
+ * @param[in] key Key to get.
+ * @param[out] out State of target key to give back to caller.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_getkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state *out);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
