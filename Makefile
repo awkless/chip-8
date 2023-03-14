@@ -10,6 +10,7 @@ DEBUG = -DDEBUG_TRACE
 BIN_SRCS = src/utils/error.c \
            src/utils/auxfun.c \
 	   src/core/cpu.c \
+	   src/core/keypad.c \
            src/main.c
 BIN_OBJS = $(BIN_SRCS:.c=.o)
 
@@ -18,6 +19,7 @@ TEST_SRCS  = $(BIN_SRCS:src/main.c=test/tap.c)
 TEST_OBJS  = $(TEST_SRCS:.c=.o)
 TEST_UNITS = test/test_error.c  \
 	     test/test_auxfun.c \
+	     test/test_keypad.c \
 	     test/test_cpu.c
 TEST_BINS  = $(TEST_UNITS:.c=)
 
@@ -41,6 +43,7 @@ test: options $(TEST_OBJS) $(TEST_BINS)
 	@printf "\nTest output:\n"
 	./test/test_error
 	./test/test_auxfun
+	./test/test_keypad
 	./test/test_cpu
 
 # Generate test executables...
