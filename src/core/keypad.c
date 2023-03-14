@@ -136,3 +136,15 @@ chip8_error chip8_keypad_process(chip8_keypad *keypad)
 	}
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_lock(chip8_keypad *keypad, uint8_t *state)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+
+	if (state == NULL)
+		return CHIP8_EINVAL;
+
+	keypad->states = state;
+	return CHIP8_EOK;
+}
