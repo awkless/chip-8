@@ -90,3 +90,18 @@ chip8_error chip8_keypad_getkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_
 	*out = keypad->keys[key];
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_poll(bool *status)
+{
+	if (status == NULL)
+		return CHIP8_EINVAL;
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event) != 0) {
+		if (event.type == SDL_QUIT) {
+			*status = true;
+		}
+	}
+
+	return CHIP8_EOK;
+}
