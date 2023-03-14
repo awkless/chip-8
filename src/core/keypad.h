@@ -55,4 +55,15 @@ chip8_error chip8_keypad_init(chip8_keypad **keypad);
  */
 void chip8_keypad_free(chip8_keypad *keypad);
 
+/**
+ * @brief Clear keypad.
+ *
+ * @pre #keypad cannot be NULL.
+ * @post #keypad state will be cleared.
+ *
+ * @param[in,out] keypad Keypad to clear.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_clear(chip8_keypad *keypad);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
