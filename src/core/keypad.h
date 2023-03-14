@@ -66,4 +66,18 @@ void chip8_keypad_free(chip8_keypad *keypad);
  */
 chip8_error chip8_keypad_clear(chip8_keypad *keypad);
 
+/**
+ * @brief Set a key in keypad.
+ *
+ * @pre #keypad cannot be NULL.
+ * @pre #key cannot be larger that #CHIP8_KEYPAD_SIZE.
+ * @post #key in keypad will be set to target #state.
+ *
+ * @param[in,out] keypad Keypad to set key into.
+ * @param[in] key Key to set.
+ * @param[in] state State to set target key too.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_setkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state state);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
