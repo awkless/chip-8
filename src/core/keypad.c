@@ -49,3 +49,12 @@ void chip8_keypad_free(chip8_keypad *keypad)
 	chip8_debug("free CHIP-8 keypad");
 	free(keypad);
 }
+
+chip8_error chip8_keypad_clear(chip8_keypad *keypad)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+
+	memset(keypad->keys, CHIP8_KEY_UP, CHIP8_KEYPAD_SIZE);
+	return CHIP8_EOK;
+}
