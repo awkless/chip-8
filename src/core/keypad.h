@@ -131,4 +131,17 @@ chip8_error chip8_keypad_process(chip8_keypad *keypad);
  */
 chip8_error chip8_keypad_lock(chip8_keypad *keypad, uint8_t *state);
 
+/**
+ * @brief Check if keypad is locked.
+ *
+ * @pre #keypad cannot be NULL.
+ * @pre #status cannot be NULL.
+ * @post #status will be true if keypad is locked, false otherwise.
+ *
+ * @param[in,out] keypad Keypad to check.
+ * @param[out] status Status of keypad.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_islock(chip8_keypad *keypad, bool *status);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
