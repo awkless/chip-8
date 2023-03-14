@@ -45,4 +45,14 @@ typedef struct {
  */
 chip8_error chip8_keypad_init(chip8_keypad **keypad);
 
+/**
+ * @brief Deinitialize keypad.
+ *
+ * @pre #keypad must be initialized by #chip8_keypad_init() beforehand.
+ * @post #keypad will be deinitialized from memory.
+ *
+ * @param[in,out] keypad Keypad to free.
+ */
+void chip8_keypad_free(chip8_keypad *keypad);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
