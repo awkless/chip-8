@@ -32,4 +32,17 @@ typedef struct {
 	uint8_t *states;                 /**< Scan code state. */
 } chip8_keypad;
 
+/**
+ * @brief Initialize keypad.
+ *
+ * @pre #keypad cannot be NULL.
+ * @post #keypad will be allocated dynamically with cleared state.
+ * @post You must call #chip8_keypad_free() to deallocate #keypad to avoid
+ *       memory leaks.
+ *
+ * @param[in,out] keypad Keypad to initialize.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_init(chip8_keypad **keypad);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
