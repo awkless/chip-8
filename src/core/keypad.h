@@ -106,4 +106,16 @@ chip8_error chip8_keypad_getkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_
  */
 chip8_error chip8_keypad_poll(bool *status);
 
+/**
+ * @brief Process keypad input.
+ *
+ * @note This should be called after #chip8_keypad_poll().
+ * @pre #keypad cannot be NULL.
+ * @post Process input into keypad.
+ *
+ * @param[in,out] keypad Keypad to process input into.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_process(chip8_keypad *keypad);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
