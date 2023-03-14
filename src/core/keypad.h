@@ -95,4 +95,15 @@ chip8_error chip8_keypad_setkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_
  */
 chip8_error chip8_keypad_getkey(chip8_keypad *keypad, uint8_t key, chip8_keypad_state *out);
 
+/**
+ * @brief Poll for keypad input.
+ *
+ * @pre #status cannot be NULL.
+ * @post Return true if poll wants to exit main loop, false otherwise.
+ *
+ * @param[out] status Status of poll.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_poll(bool *status);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
