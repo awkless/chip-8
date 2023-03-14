@@ -118,4 +118,17 @@ chip8_error chip8_keypad_poll(bool *status);
  */
 chip8_error chip8_keypad_process(chip8_keypad *keypad);
 
+/**
+ * @brief Lock keypad as user is holding down a key.
+ *
+ * @pre #keypad cannot be NULL.
+ * @pre #state cannot be NULL.
+ * @post Keypad will be locked.
+ *
+ * @param[in,out] keypad Keypad to lock.
+ * @param[in] state Scan code state to lock keypad with.
+ * @return 0 (#CHIP8_EOK) for success, or #chip8_error code for failure.
+ */
+chip8_error chip8_keypad_lock(chip8_keypad *keypad, uint8_t *state);
+
 #endif /* CHIP8_CORE_KEYBOARD_H */
