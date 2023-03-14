@@ -148,3 +148,15 @@ chip8_error chip8_keypad_lock(chip8_keypad *keypad, uint8_t *state)
 	keypad->states = state;
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_islock(chip8_keypad *keypad, bool *status)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+
+	if (status == NULL)
+		return CHIP8_EINVAL;
+
+	*status = keypad->states != NULL;
+	return CHIP8_EOK;
+}
