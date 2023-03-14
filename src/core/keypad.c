@@ -41,3 +41,11 @@ error:
 done:
 	return flag;
 }
+
+void chip8_keypad_free(chip8_keypad *keypad)
+{
+	chip8_debug("shutdown SDL2 event sub-system");
+	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	chip8_debug("free CHIP-8 keypad");
+	free(keypad);
+}
