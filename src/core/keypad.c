@@ -105,3 +105,34 @@ chip8_error chip8_keypad_poll(bool *status)
 
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_keypad_process(chip8_keypad *keypad)
+{
+	if (keypad == NULL)
+		return CHIP8_EINVAL;
+	
+	const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+	const int keymap[] = {
+		SDL_SCANCODE_X, /* 0 */
+		SDL_SCANCODE_1, /* 1 */
+		SDL_SCANCODE_2, /* 2 */
+		SDL_SCANCODE_3, /* 3 */
+		SDL_SCANCODE_Q, /* 4 */
+		SDL_SCANCODE_W, /* 5 */
+		SDL_SCANCODE_E, /* 6 */
+		SDL_SCANCODE_A, /* 7 */
+		SDL_SCANCODE_S, /* 8 */
+		SDL_SCANCODE_D, /* 9 */
+		SDL_SCANCODE_Z, /* A */
+		SDL_SCANCODE_C, /* B */
+		SDL_SCANCODE_4, /* C */
+		SDL_SCANCODE_R, /* D */
+		SDL_SCANCODE_F, /* E */
+		SDL_SCANCODE_V  /* F */
+	};
+
+	for (uint8_t i = 0; i < chip8_arrsize(keymap); ++i) {
+		chip8_keypad_setkey(keypad, i, keystates[keymap[i]]);
+	}
+	return CHIP8_EOK;
+}
