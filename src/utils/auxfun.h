@@ -8,9 +8,37 @@
 #ifndef CHIP8_UTILS_H
 #define CHIP8_UTILS_H
 
+#include <stdio.h>
 #include <stdint.h>
 
 #include "utils/error.h"
+
+#ifdef DEBUG_TRACE
+/**
+ * @brief Output debugging string with newline.
+ *
+ * @pre String to debug print.
+ * @post Output debugging string onto stderr if -DDEBUG_TRACE is enabled.
+ *
+ * @param[in] x String to debug print.
+ */
+#define chip8_debug(x) fprintf(stderr, "chip-8 debug: %s\n", x);
+
+/**
+ * @brief Output debugging string with variadic arguments.
+ *
+ * @pre Variadic arguments to debug print.
+ * @post Output debugging variadic string onto stderr if -DDEBUG_TRACE is
+ *       enabled.
+ *
+ * @param[in] x String to print.
+ * @param[in] ... Variadic arguments to substitute into string.
+ */
+#define chip8_debugx(x, ...) fprintf(stderr, "chip-8 debug: "x, ##__VA_ARGS__);
+#else
+#define chip8_debug(x);
+#define chip8_debugx(x, ...);
+#endif /* CHIP8_DEBUG */
 
 /**
  * @brief Helper macro to calculate array sizes.
