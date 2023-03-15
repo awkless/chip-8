@@ -87,14 +87,27 @@ static void test_chip8_keypad_getkey(void)
 }
 
 /*
+ * Test chip8_keypad_poll().
+ *
+ * TEST TYPES:
+ *   1. chip8_keypad_poll() catches NULL argument.
+ */
+static void test_chip8_keypad_poll(void)
+{
+	cmp_ok(chip8_keypad_poll(NULL), "==", CHIP8_EINVAL,
+	       "chip8_keypad_poll catches NULL argument");
+}
+
+/*
  * Starting point of tests.
  */
 int main(void)
 {
-	plan(11);
+	plan(13);
 	test_chip8_keypad_init();
 	test_chip8_keypad_clear();
 	test_chip8_keypad_setkey();
 	test_chip8_keypad_getkey();
+	test_chip8_keypad_poll();
 	done_testing();
 }
