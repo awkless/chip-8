@@ -137,6 +137,32 @@ static void test_chip8_keypad_lock(void)
 }
 
 /*
+ * Test chip8_keypad_islock()
+ *
+ * TEST TYPES:
+ *   1. chip8_keypad_islock() catches NULL keypad.
+ *   2. chip8_keypad_islock() catches NULL status.
+ */
+static void test_chip8_keypad_islock(void)
+{
+	chip8_keypad *stub = NULL;
+	chip8_error flag = CHIP8_EOK;
+
+	cmp_ok(chip8_keypad_islock(NULL, NULL), "==", CHIP8_EINVAL,
+	       "chip8_keypad_islock() catches NULL keypad");
+
+	flag = chip8_keypad_init(&stub);
+	if (flag != CHIP8_EOK)
+		BAIL_OUT("failed to create CHIP-8 stub keypad");
+	
+	cmp_ok(chip8_keypad_islock(stub, NULL), "==", CHIP8_EINVAL,
+	       "chip8_keypad_islock() catches NULL status");
+	
+	chip8_keypad_free(stub);
+	stub = NULL;
+}
+
+/*
  * Starting point of tests.
  */
 int main(void)
@@ -149,5 +175,6 @@ int main(void)
 	test_chip8_keypad_poll();
 	test_chip8_keypad_process();
 	test_chip8_keypad_lock();
+	test_chip8_keypad_islock();
 	done_testing();
 }
