@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Get SDL2
-      run: sudo apt-get install libsdl2-dev
+      run: sudo apt-get update && sudo apt-get install libsdl2-dev
     - name: Checkout Repo
       uses: actions/checkout@v3
     - name: Run Tests
