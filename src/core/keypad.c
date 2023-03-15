@@ -1,5 +1,5 @@
 /* SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
- * SDPX-License-Identifier: MIT
+ * SPDX-License-Identifier: MIT
  */
 
 #include <string.h>
