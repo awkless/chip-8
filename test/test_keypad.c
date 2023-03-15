@@ -31,6 +31,32 @@ static void test_chip8_keypad_clear(void)
 }
 
 /*
+ * Test chip8_keypad_setkey().
+ *
+ * TEST TYPES:
+ *   1. chip8_keypad_setkey() catches NULL keypad.
+ *   2. chip8_keypad_setkey() catches invalid key index.
+ */
+static void test_chip8_keypad_setkey(void)
+{
+	chip8_keypad *stub = NULL;
+	chip8_error flag = CHIP8_EOK;
+
+	cmp_ok(chip8_keypad_setkey(NULL, 0, 0), "==", CHIP8_EINVAL,
+	       "chip8_keypad_setkey() catches NULL keypad");
+
+	flag = chip8_keypad_init(&stub);
+	if (flag != CHIP8_EOK)
+		BAIL_OUT("failed to create CHIP-8 keypad stub");
+
+	cmp_ok(chip8_keypad_setkey(stub, 100, 1), "==", CHIP8_EINVAL,
+	       "chip8_keypad_setkey() catches invalid key index");
+	
+	chip8_keypad_free(stub);
+	stub = NULL;
+}
+
+/*
  * Starting point of tests.
  */
 int main(void)
@@ -38,5 +64,6 @@ int main(void)
 	plan(11);
 	test_chip8_keypad_init();
 	test_chip8_keypad_clear();
+	test_chip8_keypad_setkey();
 	done_testing();
 }
