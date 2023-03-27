@@ -104,3 +104,15 @@ chip8_error chip8_video_clear(chip8_video *video)
 	memset(video->pixels, 0, sizeof video->pixels);
 	return CHIP8_EOK;
 }
+
+void chip8_video_free(chip8_video *video)
+{
+	chip8_debug("shutdown SDL2 video sub-system");
+	SDL_DestroyTexture(video->texture);
+	SDL_DestroyRenderer(video->renderer);
+	SDL_DestroyWindow(video->window);
+	SDL_QuitSubSystem(SDL_INIT_VIDEO);
+
+	chip8_debug("free CHIP-8 video");
+	free(video);
+}
