@@ -4,22 +4,24 @@
 include config.mk
 
 # Uncomment for debug tracing...
-DEBUG = -DDEBUG_TRACE
+#DEBUG = -DDEBUG_TRACE
 
 # CHIP-8 source code...
 BIN_SRCS = src/utils/error.c \
            src/utils/auxfun.c \
 	   src/core/cpu.c \
 	   src/core/keypad.c \
+	   src/core/video.c \
            src/main.c
 BIN_OBJS = $(BIN_SRCS:.c=.o)
 
 # Unit test source code...
 TEST_SRCS  = $(BIN_SRCS:src/main.c=test/tap.c)
 TEST_OBJS  = $(TEST_SRCS:.c=.o)
-TEST_UNITS = test/test_error.c  \
+TEST_UNITS = test/test_error.c \
 	     test/test_auxfun.c \
 	     test/test_keypad.c \
+	     test/test_video.c \
 	     test/test_cpu.c
 TEST_BINS  = $(TEST_UNITS:.c=)
 
@@ -45,6 +47,7 @@ test: options $(TEST_OBJS) $(TEST_BINS)
 	./test/test_auxfun
 	./test/test_keypad
 	./test/test_cpu
+	./test/test_video
 
 # Generate test executables...
 .c:
@@ -69,7 +72,8 @@ uninstall:
 
 # Clean up...
 clean:
-	@rm -rfv docs/doxygen src/*.o src/utils/*.o test/*.o $(TEST_BINS) chip-8
+	@rm -rfv docs/doxygen src/*.o src/core/*.o src/utils/*.o \
+	         test/*.o $(TEST_BINS) chip-8
 
 # Avoid name conflicts...
 .PHONEY: all clean install uninstall options chip-8
