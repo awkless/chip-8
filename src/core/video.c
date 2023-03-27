@@ -95,3 +95,12 @@ chip8_error chip8_video_render(chip8_video *video)
 	SDL_RenderPresent(video->renderer);
 	return CHIP8_EOK;
 }
+
+chip8_error chip8_video_clear(chip8_video *video)
+{
+	if (video == NULL)
+		return CHIP8_EINVAL;
+
+	memset(video->pixels, 0, sizeof video->pixels);
+	return CHIP8_EOK;
+}
