@@ -74,3 +74,24 @@ error:
 done:
 	return flag;
 }
+
+chip8_error chip8_video_render(chip8_video *video)
+{
+	if (video == NULL)
+		return CHIP8_EINVAL;
+
+	for (int y = 0; y < CHIP8_VIDEO_HEIGHT; y++) {
+		for (int x = 0; x < CHIP8_VIDEO_WIDTH; x++) {
+			uint8_t pixel = video->pixels[y][x];
+			video->buffer[(y * CHIP8_VIDEO_WIDTH) + x] =
+				(0x8FF58600 * pixel) | 0x142838FF;
+		}
+	}
+
+	SDL_UpdateTexture(video->texture, NULL, video->buffer,
+			  CHIP8_VIDEO_WIDTH * sizeof(uint32_t));
+	SDL_RenderClear(video->renderer);
+	SDL_RenderCopy(video->renderer, video->texture, NULL, NULL);
+	SDL_RenderPresent(video->renderer);
+	return CHIP8_EOK;
+}
