@@ -53,4 +53,14 @@ chip8_error chip8_video_init(chip8_video **video, unsigned int scale);
  */
 void chip8_video_free(chip8_video *video);
 
+/**
+ * @brief Buffer and render pixel data to window.
+ *
+ * @pre video must not be NULL.
+ *
+ * @param[in] video Video context to render pixel data from.
+ * @return 0 (CHIP8_EOK) for success or chip8_error for failure.
+ */
+chip8_error chip8_video_render(chip8_video *video);
+
 #endif /* CHIP8_CORE_VIDEO_H */
