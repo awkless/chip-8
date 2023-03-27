@@ -43,4 +43,14 @@ typedef struct {
  */
 chip8_error chip8_video_init(chip8_video **video, unsigned int scale);
 
+/**
+ * @brief Destroy CHIP-8 video context.
+ *
+ * @pre You must have called chip8_video_init() beforehand.
+ * @post Video context will be freed.
+ *
+ * @param[in] video Video context to destroy.
+ */
+void chip8_video_free(chip8_video *video);
+
 #endif /* CHIP8_CORE_VIDEO_H */
