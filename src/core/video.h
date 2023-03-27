@@ -28,4 +28,19 @@ typedef struct {
 	uint32_t buffer[CHIP8_VIDEO_WIDTH * CHIP8_VIDEO_HEIGHT];
 } chip8_video;
 
+/**
+ * @brief Create a new CHIP-8 video context.
+ *
+ * @note Set scale to 0 for default window size.
+ *
+ * @pre video cannot be NULL.
+ * @post Will create a new video context with a fully rendered window.
+ *
+ * @param[in,out] video Video pointer to initialize.
+ * @param[in] scale Scale of window to create.
+ *
+ * @return 0 (CHIP8_EOK) for success or chip8_error for failure.
+ */
+chip8_error chip8_video_init(chip8_video **video, unsigned int scale);
+
 #endif /* CHIP8_CORE_VIDEO_H */
