@@ -63,4 +63,15 @@ void chip8_video_free(chip8_video *video);
  */
 chip8_error chip8_video_render(chip8_video *video);
 
+/**
+ * @brief Clear pixel data.
+ *
+ * @pre video must not be NULL.
+ * @post video->pixels contents will be memset to zero.
+ *
+ * @param[in] video Video pixel data to clear.
+ * @return 0 (CHIP8_EOK) for success or chip8_error for failure.
+ */
+chip8_error chip8_video_clear(chip8_video *video);
+
 #endif /* CHIP8_CORE_VIDEO_H */
