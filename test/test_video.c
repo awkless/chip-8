@@ -22,3 +22,15 @@ static void test_chip8_video_init(void)
 	cmp_ok(chip8_video_init(NULL, 0), "==", CHIP8_EINVAL,
 	       "chip8_video_init() catches NULL argument");
 }
+
+/*
+ * Test chip8_video_render().
+ *
+ * TEST TYPES
+ *   1. chip8_video_render() catches NULL argument.
+ */
+static void test_chip8_video_render(void)
+{
+	cmp_ok(chip8_video_render(NULL), "==", CHIP8_EINVAL,
+	       "chip8_video_render() catches NULL argument");
+}
