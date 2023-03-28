@@ -99,3 +99,13 @@ void chip8_opcode_EX9E(chip8_cpu *cpu)
 		cpu->pc += 2;
 	chip8_debug("opcode EX9E");
 }
+
+void chip8_opcode_EXA1(chip8_cpu *cpu)
+{
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	chip8_keypad_state state = 0;
+	chip8_keypad_getkey(cpu->keypad, cpu->v[x], &state);
+	if (state == CHIP8_KEY_UP)
+		cpu->pc += 2;
+	chip8_debug("opcode EXA1");
+}
