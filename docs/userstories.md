@@ -65,3 +65,103 @@ Acceptance Test: Special target `make docs` generates correct documentation
 from `src/` directory.
 
 Effort Estimiation: 1 person-hours
+
+# 2. Setup CPU
+
+As a developer we need to setup the base skeleton of the CHIP-8 CPU. We need to
+setup the registers, RAM, and determine the method of opcode decoding and
+execution.
+
+Constraints: Internals must match the CHIP-8 specs as closely as possible.
+
+Acceptance Test: CPU can load and obtain a basic opcode from a ROM.
+
+Effort Estimation: 3 person-hours
+
+## 2.1. Opcode Timing
+
+As a developer we need a way to make sure the CPU executes an opcode with a
+specific amount of timing. The CHIP-8 specs are very obtuse about how
+instruction cycle timing works, so we will go with a simple design of "How
+many opcodes can the CPU process in one second?".
+
+Constraints: We must use the SDL2 timer sub-system to get the correct timing
+for instruction cycles.
+
+Acceptance Test: The CPU clearly shows that it processes a specific number
+of instruction in under one second, e.g., if CPU is set to one instruction
+per second, then the CPU will only process one instruction in one second.
+
+Effort Estimation: 4 person-hours
+
+# 3. Keypad System
+
+As a developer we need to setup the keypad module to allow the CPU module to
+process user input from the keyboard such that the keypad module converts
+keyboard input into the traditional CHIP-8 keypad.
+
+constraints: We must use the SDL2 event API.
+
+Acceptance test: Keypad module can process keyboard presses of target keys.
+
+Effort Estimation: 2 person-hours
+
+## 3.1. Keypad API
+
+As a developer we need to determine the design of the keypad API. We need it
+to be simple and easy to test. We need to following kinds of functions:
+
+- A way to initialize the keypad system.
+- A way to free the memory of the keypad system.
+- A way to clear the keypad state.
+- A way to make the CPU poll for input.
+- A way to get and set keys in the keypad.
+- A way to verify that the CPU is polling for input.
+
+Constraints: Keypad API must use the SDL2 events sub-system.
+
+Acceptance Test: Creation of unit tests to verify functionality of all
+components of the API.
+
+Effort Estimation: 5 person-hours
+
+# 4. Setup Video System
+
+As a developer we need to setup a video system in order to allow the CPU to
+calculate and render pixels to the screen.
+
+Constraints: Video system must use SDL2 video sub-system.
+
+Acceptance Test: A window is properly opened.
+
+Effort Estimation: 4 person-hours
+
+## 4.1. Video API
+
+As a developer we need to determine the API design of the video system such
+that it can be easy to use and test. We need the following:
+
+- A way to create a new video system.
+- A way to free a video system from memory.
+- A way to store and render pixel data.
+- A way to clear pixel data when needed.
+
+Constraints: Video system API uses SDL2 video sub-system only.
+
+Acceptance Test: Unit test cases for each API routine that all pass.
+
+Effort Estimation: 5 person-hours
+
+## 5. Combine Video and Keypad System with CPU
+
+As a manager we need to combine the video and keypad systems with the CPU
+system in order to begin emulation of core opcode routines like DXYN or FX0A
+for Demo 1.
+
+Constraints: CPU can only use the video and keypad systems for pixel calculations,
+pixel rendering, and user input polling and processing.
+
+Acceptance Test: CPU can run the IBM Logo ROM where an IBM Logo is displayed
+properly.
+
+Effort Estimation: 3 person-hours
