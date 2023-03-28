@@ -16,3 +16,10 @@ void chip8_opcode_00EE(chip8_cpu *cpu)
 	cpu->pc = cpu->stack[cpu->sp];
 	chip8_debug("opcode 00EE");
 }
+
+void chip8_opcode_1NNN(chip8_cpu *cpu)
+{
+	uint16_t nnn = cpu->opcode & 0x0FFF;
+	cpu->pc = nnn;
+	chip8_debugx("opcode 1NNN - %04X\n", cpu->opcode);
+}
