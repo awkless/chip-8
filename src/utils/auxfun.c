@@ -34,7 +34,6 @@ chip8_error chip8_readrom(const char *path, uint8_t **buffer, size_t *size)
 		return CHIP8_ENOMEM;
 	}
 
-	chip8_debugx("read %s of %lu bytes into buffer %p\n", path, *size, newbuf);
 	fread(newbuf, sizeof *newbuf, *size, rom);
 	fclose(rom);
 
