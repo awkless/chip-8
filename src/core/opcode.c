@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2023 Jason Pena <jasonpena@awkless.com>
+ * SPDX-License-Identifier: MIT
+ */
 #include "core/opcode.h"
 #include "core/cpu.h"
 #include "core/video.h"
