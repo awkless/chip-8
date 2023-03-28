@@ -182,7 +182,7 @@ A 0 B F
 
 NF.4.1.1. Implement CLI interface with POSIX-style options.
 
-NF.4.1.2. Implement keyboard interface as described above.
+F.4.1.2. Implement keyboard interface as described above.
 
 ### 4.2 Performance Requirements
 
@@ -190,11 +190,11 @@ The Chip-8 emulator needs to accurately implement CPU instructions with
 correct timings. The Chip-8 system calculates and renders video and audio
 at 60 frames per second.
 
-NF.4.2.1 All CPU instructions are implemented correctly at 60FPS.
+F.4.2.1 All CPU instructions are implemented correctly at 60FPS.
 
-NF.4.2.2 All video rendering occurs at 60FPS.
+F.4.2.2 All video rendering occurs correctly.
 
-NF.4.2.3 All audio output occurs at 60FPS.
+F.4.2.3 All audio output occurs correctly.
 
 ### 4.3 Design Constraints
 
@@ -203,9 +203,9 @@ decoupled from its user interface. This will allow future updates or iterations
 of the project to implement their own user interfaces without needing to
 modify the core capabilities of the project.
 
-NF.4.3.1 Project must be written in pure C99 without extensions.
+F.4.3.1 Project must be written in pure C99 without extensions.
 
-NF.4.3.2 Projects emulator core must be decoupled from its user interface.
+F.4.3.2 Projects emulator core must be decoupled from its user interface.
 
 ### 4.4 Quality Requirements
 
@@ -214,20 +214,20 @@ and interpret original Chip-8 CPU instructions. All video, audio, and CPU
 instruction handling must be done between 60FPS. A special ROM testing suite
 will be used in the regular testing suite to ensure this quality.
 
-NF.4.4.1 Implement the CPU, audio, and video systems of the Chip-8 correctly.
+F.4.4.1 Implement the CPU, audio, and video systems of the Chip-8 correctly.
 
-NF.4.4.2 Integrate standard ROM testing suites into unit testing framework.
+F.4.4.2 Integrate standard ROM testing suites into unit testing framework.
 
 ### 4.5 Other Requirements
 
 The Chip-8 project cannot have any segmentation faults, memory leaks, or
 any other pieces of insecure code.
 
-NF.4.4.1 No segmentation faults.
+F.4.4.1 No segmentation faults.
 
-NF.4.4.2 No memory leaks.
+F.4.4.2 No memory leaks.
 
-NF.4.4.3 No insecure code.
+F.4.4.3 No insecure code.
 
 ## 5 Appendices
 
