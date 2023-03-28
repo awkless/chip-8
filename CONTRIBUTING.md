@@ -83,17 +83,6 @@ source code. Here is a general summary of the style:
   lowercase, do not mix casing.
 - Do not use editor modelines.
 
-Finally, for CMake files this project follows the
-[KDE Community's style][cmake-style]. Here is a general summary of the
-style:
-
-- Indentation must be 2 spaces (KDE allows variations of indentation, but this
-  project just sticks with 2 spacess).
-- Maximum line width is 120 (KDE does not specify but CMake code can get very
-  long hence why the massive line width is given).
-- Use all uppercase or all lowercase snake\_case for variables and functions,
-  do not mix them, e.g., Add\_Executable(foo.exe) is not allowed.
-
 ## Licensing and Copyright
 
 This project uses the MIT license for all source code and documentation. Please
