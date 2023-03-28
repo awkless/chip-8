@@ -33,6 +33,14 @@ void chip8_opcode_2NNN(chip8_cpu *cpu)
 	chip8_debug("opcode 2NNN");
 }
 
+
+void chip8_opcode_ANNN(chip8_cpu *cpu)
+{
+	uint16_t nnn = cpu->opcode & 0x0FFF;
+	cpu->i = nnn;
+	chip8_debugx("opcode ANNN - %04X\n", cpu->opcode);
+}
+
 void chip8_opcode_DXYN(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
