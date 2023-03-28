@@ -11,11 +11,11 @@ project.
 
 # [User Stories]
 
-TODO
+A log of the stuff the team has been doing for development.
 
 # [Requirements]
 
-TODO
+Discuss the requirements of the CHIP-8 project.
 
 # [Architecture]
 
