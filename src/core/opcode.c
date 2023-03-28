@@ -89,3 +89,13 @@ void chip8_opcode_DXYN(chip8_cpu *cpu)
 	}
 	chip8_debugx("opcode DXYN - %04X, X=%d, Y=%d\n", cpu->opcode, cpu->v[x], cpu->v[y]);
 }
+
+void chip8_opcode_EX9E(chip8_cpu *cpu)
+{
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	chip8_keypad_state state = 0;
+	chip8_keypad_getkey(cpu->keypad, cpu->v[x], &state);
+	if (state == CHIP8_KEY_DOWN)
+		cpu->pc += 2;
+	chip8_debug("opcode EX9E");
+}
