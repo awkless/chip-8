@@ -8,9 +8,10 @@
 #include "utils/error.h"
 #include "utils/auxfun.h"
 #include "core/cpu.h"
+#include "core/keypad.h"
+#include "core/video.h"
 #include "tap.h"
 
-#define TEST_COUNT 5                          /* Amount of tests to run. */                         
 #define DEFAULT_TEST_ROM "test/roms/stub.ch8" /* Default ROM for testing. */
 
 /* Expected font map. */
@@ -50,39 +51,64 @@ static void test_chip8_cpu_reset(void)
  *
  * TEST TYPES:
  *   1. chip8_cpu_init() detects invalid argument.
- *   2. chip8_cpu_init() detects non-existant file.
- *   3. chip8_cpu_init() loads rom correctly.
- *   4. chip8_cpu_init() loads fontmap correctly.
+ *   2. chip8_cpu_init() loads fontmap correctly.
  */
-static void test_chip8_cpu_init(void)
+static void test_chip8_cpu_init(chip8_cpu *cpu, chip8_video *video,
+		                chip8_keypad *keys)
 {
-	chip8_cpu *cpu = NULL;
+	cmp_ok(chip8_cpu_init(NULL, NULL, NULL, 0), "==", CHIP8_EINVAL,
+	       "chip8_cpu_init() detects NULL CPU");
+	cmp_ok(chip8_cpu_init(&cpu, video, NULL, 0), "==", CHIP8_EINVAL,
+	       "chip8_cpu_init() detects NULL keypad");
+	cmp_ok(chip8_cpu_init(&cpu, NULL, keys, 0), "==", CHIP8_EINVAL,
+	       "chip8_cpu_init() detects NULL video");
+	cmp_mem(cpu->memory, EXPECTED_FONTMAP, chip8_arrsize(EXPECTED_FONTMAP),
+		"chip8_cpu_init() loads fontmap correctly");
+}
+
+/*
+ * Test chip8_cpu_romload().
+ *
+ * TEST TYPES:
+ *   1. chip8_cpu_romload() detects invalid arguments.
+ *   2. chip8_cpu_romload() loads ROM correctly.
+ */
+static void test_chip8_cpu_romload(chip8_cpu *cpu)
+{
 	chip8_error flag = CHIP8_EOK;
 	uint8_t *buffer = NULL;
 	size_t buflen = 0;
 
-	cmp_ok(chip8_cpu_init(&cpu, NULL), "==", CHIP8_EINVAL,
-	   "chip8_cpu_init() detects invalid argument");
-	cmp_ok(chip8_cpu_init(&cpu, "bad_rom.ch8"), "==", CHIP8_ENOFILE,
-	   "chip8_cpu_init() detects non-existant file");
+	cmp_ok(chip8_cpu_romload(NULL, "testing"), "==", CHIP8_EINVAL,
+	       "chip8_cpu_romload() detects NULL CPU context");
+	cmp_ok(chip8_cpu_romload(cpu, NULL), "==", CHIP8_EINVAL,
+	       "chip8_cpu_romload() detects NULL ROM name");
+	cmp_ok(chip8_cpu_romload(cpu, "bad.ch8"), "==", CHIP8_ENOFILE,
+	       "chip8_cpu_romload() detects non-existant ROM");
 
-	flag = chip8_cpu_init(&cpu, DEFAULT_TEST_ROM);
+	flag = chip8_cpu_romload(cpu, DEFAULT_TEST_ROM);
 	if (flag != CHIP8_EOK)
-		BAIL_OUT("failed to create a CHIP-8 CPU");
+		BAIL_OUT("stub rom could not be found");
 
 	flag = chip8_readrom(DEFAULT_TEST_ROM, &buffer, &buflen);
 	if (flag != CHIP8_EOK)
-		BAIL_OUT("failed to read ROM data");
-
+		BAIL_OUT("stub rom could not be found");
 	cmp_mem(cpu->memory + CHIP8_ROM_INIT, buffer, buflen,
 	        "chip8_cpu_init() loads rom correctly");
-	cmp_mem(cpu->memory, EXPECTED_FONTMAP, chip8_arrsize(EXPECTED_FONTMAP),
-		"chip8_cpu_init() loads fontmap correctly");
-
-	chip8_cpu_free(&cpu);
-	cpu = NULL;
 	free(buffer);
 	buffer = NULL;
+}
+
+/*
+ * Test chip8_cpu_cycle().
+ *
+ * TEST TYPES:
+ *   1. chip8_cpu_cycle() detects NULL argument.
+ */
+static void test_chip8_cpu_cycle(void)
+{
+	cmp_ok(chip8_cpu_cycle(NULL), "==", CHIP8_EINVAL,
+	       "chip8_cpu_cycle() detects NULL argument");
 }
 
 /*
@@ -90,8 +116,31 @@ static void test_chip8_cpu_init(void)
  */
 int main(void)
 {
-	plan(TEST_COUNT);
+	chip8_video *video = NULL;
+	chip8_keypad *keys = NULL;
+	chip8_cpu *cpu = NULL;
+	chip8_error flag = CHIP8_EOK;
+	
+	flag = chip8_video_init(&video, 0);
+	if (flag != CHIP8_EOK)
+		BAIL_OUT("failed to create video system");
+
+	flag = chip8_keypad_init(&keys);
+	if (flag != CHIP8_EOK)
+		BAIL_OUT("failed to create keypad system");
+
+	flag = chip8_cpu_init(&cpu, video, keys, 0);
+	if (flag != CHIP8_EOK)
+		BAIL_OUT("failed to create cpu system");
+
+	plan(10);
 	test_chip8_cpu_reset();
-	test_chip8_cpu_init();
+	test_chip8_cpu_init(cpu, video, keys);
+	test_chip8_cpu_romload(cpu);
+	test_chip8_cpu_cycle();
 	done_testing();
+
+	chip8_video_free(video);
+	chip8_keypad_free(keys);
+	chip8_cpu_free(cpu);
 }
