@@ -116,3 +116,11 @@ void chip8_opcode_FX0A(chip8_cpu *cpu)
 	chip8_keypad_lock(cpu->keypad, &cpu->v[x]);
 	chip8_debug("opcode FX0A");
 }
+void chip8_opcode_FX33(chip8_cpu *cpu)
+{
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->memory[cpu->i] = cpu->v[x] / 100;
+	cpu->memory[cpu->i + 1] = (cpu->v[x] / 10) % 10;
+	cpu->memory[cpu->i + 2] = (cpu->v[x] % 100) % 10;
+	chip8_debug("opcode FX33");
+}
