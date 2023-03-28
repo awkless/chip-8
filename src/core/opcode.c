@@ -32,3 +32,26 @@ void chip8_opcode_2NNN(chip8_cpu *cpu)
 	cpu->pc = nnn;
 	chip8_debug("opcode 2NNN");
 }
+
+void chip8_opcode_DXYN(chip8_cpu *cpu)
+{
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	uint8_t n = cpu->opcode & 0x000F;
+	uint8_t xpos = cpu->v[x];
+	uint8_t ypos = cpu->v[y];
+	uint8_t pixel = 0;
+
+	cpu->v[0xF] = 0;
+	for (int col = 0; col < n; col++) {
+		pixel = cpu->memory[cpu->i + col];
+		for (int row = 0; row < 8; row++) {
+			if ((pixel & (0x80 >> row)) != 0) {
+				if (cpu->video->pixels[ypos + col][xpos + row] == 1)
+					cpu->v[0xF] = 1;
+				cpu->video->pixels[ypos + col][xpos + row] ^= 1;
+			}
+		}
+	}
+	chip8_debugx("opcode DXYN - %04X, X=%d, Y=%d\n", cpu->opcode, cpu->v[x], cpu->v[y]);
+}
