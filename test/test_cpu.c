@@ -121,12 +121,12 @@ int main(void)
 	chip8_cpu *cpu = NULL;
 	chip8_error flag = CHIP8_EOK;
 	
-	flag = chip8_video_init(&video, 0);
-	if (flag != CHIP8_EOK)
+	video = malloc(sizeof *video);
+	if (video == NULL)
 		BAIL_OUT("failed to create video system");
 
-	flag = chip8_keypad_init(&keys);
-	if (flag != CHIP8_EOK)
+	keys = malloc(sizeof *keys);
+	if (keys == NULL)
 		BAIL_OUT("failed to create keypad system");
 
 	flag = chip8_cpu_init(&cpu, video, keys, 0);
@@ -140,7 +140,7 @@ int main(void)
 	test_chip8_cpu_cycle();
 	done_testing();
 
-	chip8_video_free(video);
-	chip8_keypad_free(keys);
+	free(video);
+	free(keys);
 	chip8_cpu_free(cpu);
 }
