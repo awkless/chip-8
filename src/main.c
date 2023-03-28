@@ -7,6 +7,8 @@
 
 #include "SDL.h"
 #include "utils/error.h"
+#include "core/keypad.h"
+#include "core/video.h"
 #include "core/cpu.h"
 
 /**
@@ -16,30 +18,41 @@
  */
 int main(void)
 {
-	/* Opening a basic window to test that SDL2 links properly... */
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window *win = SDL_CreateWindow("chip-8 "VERSION,
-			SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED,
-			1280,
-			720,
-			0);
+	chip8_video *video = NULL;
+	chip8_keypad *keypad = NULL;
+	chip8_cpu *cpu = NULL;
+	chip8_error flag = CHIP8_EOK;
+	bool quit = false;
 
-	SDL_Renderer *rend = SDL_CreateRenderer(win, -1, 0);
-	SDL_Event event;
-	bool run = true;
-	while (run) {
-		while (SDL_PollEvent(&event) > 0) {
-			switch(event.type) {
-			case SDL_QUIT:
-				run = false;
-				break;
-			}
-		}
-		SDL_RenderPresent(rend);
+	flag = chip8_video_init(&video, 10);
+	if (flag != CHIP8_EOK)
+		chip8_die(flag);
+
+	flag = chip8_keypad_init(&keypad);
+	if (flag != CHIP8_EOK)
+		chip8_die(flag);
+
+	flag = chip8_cpu_init(&cpu, video, keypad, 1);
+	if (flag != CHIP8_EOK)
+		chip8_die(flag);
+
+	flag = chip8_cpu_romload(cpu, "test/roms/ibm_logo.ch8");
+	if (flag != CHIP8_EOK)
+		chip8_die(flag);
+
+	while (!quit) {
+		chip8_keypad_poll(&quit);
+		chip8_keypad_process(keypad);
+		flag = chip8_cpu_cycle(cpu);
+		if (flag != CHIP8_EOK)
+			chip8_die(flag);
+		flag = chip8_video_render(video);
+		if (flag != CHIP8_EOK)
+			chip8_die(flag);
 	}
-	SDL_DestroyRenderer(rend);
-	SDL_DestroyWindow(win);
-	SDL_Quit();
+
+	chip8_keypad_free(keypad);
+	chip8_video_free(video);
+	chip8_cpu_free(cpu);
 	return 0;
 }
