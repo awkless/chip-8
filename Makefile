@@ -9,6 +9,7 @@ include config.mk
 # CHIP-8 source code...
 BIN_SRCS = src/utils/error.c \
            src/utils/auxfun.c \
+	   src/core/opcode.c \
 	   src/core/cpu.c \
 	   src/core/keypad.c \
 	   src/core/video.c \
