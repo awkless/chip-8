@@ -109,3 +109,10 @@ void chip8_opcode_EXA1(chip8_cpu *cpu)
 		cpu->pc += 2;
 	chip8_debug("opcode EXA1");
 }
+
+void chip8_opcode_FX0A(chip8_cpu *cpu)
+{
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	chip8_keypad_lock(cpu->keypad, &cpu->v[x]);
+	chip8_debug("opcode FX0A");
+}
