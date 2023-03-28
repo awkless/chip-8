@@ -23,3 +23,12 @@ void chip8_opcode_1NNN(chip8_cpu *cpu)
 	cpu->pc = nnn;
 	chip8_debugx("opcode 1NNN - %04X\n", cpu->opcode);
 }
+
+void chip8_opcode_2NNN(chip8_cpu *cpu)
+{
+	uint16_t nnn = cpu->opcode & 0x0FFF;
+	cpu->stack[cpu->sp] = cpu->pc;
+	cpu->sp++;
+	cpu->pc = nnn;
+	chip8_debug("opcode 2NNN");
+}
