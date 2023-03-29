@@ -38,17 +38,32 @@ void chip8_opcode_2NNN(chip8_cpu *cpu)
 
 void chip8_opcode_3XNN(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t nn = cpu->opcode & 0x00FF;
+	 if (cpu->v[x] == nn)
+            {
+                cpu->pc += 2;
+            }
 }
 
 void chip8_opcode_4XNN(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t nn = cpu->opcode & 0x00FF;
+	if (cpu->v[x] != nn)
+            {
+                cpu->pc += 2;
+            }
 }
 
 void chip8_opcode_5XY0(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	if (cpu->v[x] == cpu->cpu.v[y])
+            {
+                cpu->pc += 2;
+            }
 }
 
 void chip8_opcode_6XNN(chip8_cpu *cpu)
@@ -69,22 +84,30 @@ void chip8_opcode_7XNN(chip8_cpu *cpu)
 
 void chip8_opcode_8XY0(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[x] = cpu->v[y];
 }
 
 void chip8_opcode_8XY1(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[x] = cpu->v[x] | cpu->v[y];
 }
 
 void chip8_opcode_8XY2(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[x] = cpu->v[x] & cpu->v[y];
 }
 
 void chip8_opcode_8XY3(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[x] = cpu->v[x] ^ cpu->v[y];
 }
 
 void chip8_opcode_8XY4(chip8_cpu *cpu)
