@@ -60,7 +60,7 @@ void chip8_opcode_5XY0(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
 	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
-	if (cpu->v[x] == cpu->cpu.v[y])
+	if (if (cpu->v[x] == cpu->v[y]))
             {
                 cpu->pc += 2;
             }
@@ -112,7 +112,7 @@ void chip8_opcode_8XY3(chip8_cpu *cpu)
 
 void chip8_opcode_8XY4(chip8_cpu *cpu)
 {
-	/* TODO */
+	
 }
 
 void chip8_opcode_8XY5(chip8_cpu *cpu)
