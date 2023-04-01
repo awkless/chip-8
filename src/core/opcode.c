@@ -127,15 +127,16 @@ void chip8_opcode_8XY4(chip8_cpu *cpu)
 
 void chip8_opcode_8XY5(chip8_cpu *cpu)
 {
-	uint16_t tmp = 0;
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
-	cpu->v[0x0f] = false;
-        if (cpu->v[x] > cpu->v[y])
-        {
-            cpu->v[0x0f] = true;
-        }
-        cpu->v[x] = cpu->v[x] - cpu->v[y];
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;	
+	if (cpu->v[x] > cpu->v[y])
+	{
+        	cpu->v[0x0F] = false; 
+	}
+	else
+	{
+        	cpu->v[0x0F] = true;
+	}
 }
 
 void chip8_opcode_8XY6(chip8_cpu *cpu)
