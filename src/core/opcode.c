@@ -137,6 +137,8 @@ void chip8_opcode_8XY5(chip8_cpu *cpu)
 	{
         	cpu->v[0x0F] = true;
 	}
+	
+	cpu->v[x] = cpu->v[x] - cpu->v[y];
 }
 
 void chip8_opcode_8XY6(chip8_cpu *cpu)
