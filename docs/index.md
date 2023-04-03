@@ -19,7 +19,8 @@ Discuss the requirements of the CHIP-8 project.
 
 # [Architecture]
 
-TODO
+State the architecture design of the CHIP-8 emulator implemented for this
+project.
 
 # [Design Document]
 
