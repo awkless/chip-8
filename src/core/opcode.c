@@ -145,8 +145,8 @@ void chip8_opcode_8XY5(chip8_cpu *cpu)
 void chip8_opcode_8XY6(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	cpu->v[0x0F] = cpu->v[x] & 0x01
-	cpu->v[x] = cpu->v[x] / 2
+	cpu->v[0x0F] = cpu->v[x] & 0x01;
+	cpu->v[x] = cpu->v[x] / 2;
 }
 
 //added
@@ -308,7 +308,7 @@ void chip8_opcode_FX55(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
 	for(int reg = 0; reg < x; ++reg) {
-		cpu->memory[cpu->i + reg] = cpu->v[reg]
+		cpu->memory[cpu->i + reg] = cpu->v[reg];
 	}
 }
 
