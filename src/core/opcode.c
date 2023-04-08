@@ -307,7 +307,7 @@ void chip8_opcode_FX33(chip8_cpu *cpu)
 void chip8_opcode_FX55(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	for(int reg = 0; reg < x, ++reg) {
+	for(int reg = 0; reg < x; ++reg) {
 		cpu->memory[cpu->i + reg] = cpu->v[reg]
 	}
 }
@@ -316,7 +316,7 @@ void chip8_opcode_FX55(chip8_cpu *cpu)
 void chip8_opcode_FX65(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	for(int reg = 0; reg < x, ++reg) {
+	for(int reg = 0; reg < x; ++reg) {
 		cpu->v[reg] = cpu->memory[cpu->i + reg];
 	}
 }
