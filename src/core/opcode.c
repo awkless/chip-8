@@ -141,24 +141,48 @@ void chip8_opcode_8XY5(chip8_cpu *cpu)
 	cpu->v[x] = cpu->v[x] - cpu->v[y];
 }
 
+//added
 void chip8_opcode_8XY6(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->v[0x0F] = cpu->v[x] & 0x01
+	cpu->v[x] = cpu->v[x] / 2
 }
 
+//added
 void chip8_opcode_8XY7(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;	
+	if (cpu->v[y] > cpu->v[x])
+	{
+        	cpu->v[0x0F] = false; 
+	}
+	else
+	{
+        	cpu->v[0x0F] = true;
+	}
+	
+	cpu->v[x] = cpu->v[y] - cpu->v[x];
 }
 
+//added
 void chip8_opcode_8XYE(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->v[0x0F] = cpu->v[x] & 0x80
+	cpu->v[x] = cpu->v[x] * 2
 }
 
+//added
 void chip8_opcode_9XY0(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	if (cpu->v[x] != cpu->v[y])
+	{
+        	cpu->pc += 2;
+	}
 }
 
 void chip8_opcode_ANNN(chip8_cpu *cpu)
@@ -168,9 +192,11 @@ void chip8_opcode_ANNN(chip8_cpu *cpu)
 	chip8_debugx("opcode ANNN - %04X\n", cpu->opcode);
 }
 
+//added
 void chip8_opcode_BNNN(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint16_t nnn = cpu->opcode & 0x0FFF;
+	cpu->pc = cpu->v[0] + nnn;
 }
 
 void chip8_opcode_CXNN(chip8_cpu *cpu)
@@ -226,9 +252,11 @@ void chip8_opcode_EXA1(chip8_cpu *cpu)
 	chip8_debug("opcode EXA1");
 }
 
+//added
 void chip8_opcode_FX07(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->v[x] = cpu->dt
 }
 
 void chip8_opcode_FX0A(chip8_cpu *cpu)
@@ -238,24 +266,32 @@ void chip8_opcode_FX0A(chip8_cpu *cpu)
 	chip8_debug("opcode FX0A");
 }
 
+//added
 void chip8_opcode_FX15(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->dt = cpu->v[x]
 }
 
+//added
 void chip8_opcode_FX18(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->st = cpu->v[x]
 }
 
+//added
 void chip8_opcode_FX1E(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->i += cpu->v[x]
 }
 
+//added
 void chip8_opcode_FX29(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	cpu->i = cpu->v[x] * 0x05
 }
 
 void chip8_opcode_FX33(chip8_cpu *cpu)
@@ -267,12 +303,20 @@ void chip8_opcode_FX33(chip8_cpu *cpu)
 	chip8_debug("opcode FX33");
 }
 
+//added
 void chip8_opcode_FX55(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	for(int reg = 0; reg < x, ++reg) {
+		cpu->memory[cpu->i + reg] = cpu->v[reg]
+	}
 }
 
+//added
 void chip8_opcode_FX65(chip8_cpu *cpu)
 {
-	/* TODO */
+	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
+	for(int reg = 0; reg < x, ++reg) {
+		cpu->v[reg] = cpu->memory[cpu->i + reg]
+	}
 }
