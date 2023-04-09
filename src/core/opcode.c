@@ -145,8 +145,9 @@ void chip8_opcode_8XY5(chip8_cpu *cpu)
 void chip8_opcode_8XY6(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	cpu->v[0x0F] = cpu->v[x] & 0x01;
-	cpu->v[x] = cpu->v[x] / 2;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[0x0F] = cpu->v[y] & 0x01;
+	cpu->v[x] = cpu->v[y] / 2;
 }
 
 //added
@@ -170,8 +171,9 @@ void chip8_opcode_8XY7(chip8_cpu *cpu)
 void chip8_opcode_8XYE(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	cpu->v[0x0F] = cpu->v[x] & 0x80;
-	cpu->v[x] = cpu->v[x] * 2;
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
+	cpu->v[0x0F] = cpu->v[y] & 0x80;
+	cpu->v[x] = cpu->v[y] * 2;
 }
 
 //added
