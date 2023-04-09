@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 # chip-8 version...
-VERSION = 0.0.5
+VERSION = 0.2.0
 
 # Paths...
 PREFIX = /usr/local
