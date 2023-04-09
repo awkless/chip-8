@@ -310,6 +310,7 @@ void chip8_opcode_FX55(chip8_cpu *cpu)
 	for(int reg = 0; reg <= x; ++reg) {
 		cpu->memory[cpu->i + reg] = cpu->v[reg];
 	}
+	cpu->i = cpu->i + x + 1;
 }
 
 //added
@@ -319,4 +320,6 @@ void chip8_opcode_FX65(chip8_cpu *cpu)
 	for(int reg = 0; reg <= x; ++reg) {
 		cpu->v[reg] = cpu->memory[cpu->i + reg];
 	}
+	
+	cpu->i = cpu->i + x + 1;
 }
