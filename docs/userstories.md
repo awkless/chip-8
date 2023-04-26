@@ -152,7 +152,7 @@ Acceptance Test: Unit test cases for each API routine that all pass.
 
 Effort Estimation: 5 person-hours
 
-## 5. Combine Video and Keypad System with CPU
+# 5. Combine Video and Keypad System with CPU
 
 As a manager we need to combine the video and keypad systems with the CPU
 system in order to begin emulation of core opcode routines like DXYN or FX0A
@@ -165,3 +165,24 @@ Acceptance Test: CPU can run the IBM Logo ROM where an IBM Logo is displayed
 properly.
 
 Effort Estimation: 3 person-hours
+
+## 6. Setup CI pipeline
+
+As a manager we need to setup a simple CI pipeline on GitHub actions to perform
+automated execution of our unit testing suite. If any test fails for pull
+requests, then the pull request must be rejected automatically with an error
+report stating what failed.
+
+Acceptance Test: GitHub actions runs and passes current unit tests.
+
+Effort Estimation: 2 person-hours
+
+## 7. Run Corax89's ROM test
+
+As a developer we need to see if our CPU implementation performs the proper
+decoding and execution of instructions as a whole. Thus, as a full system test
+we need to run the Corax89 ROM for this purpose.
+
+Acceptance Test: Corax89 ROM states that all opcodes are implemented correctly.
+
+Effort Estimation: 1 person-hours
