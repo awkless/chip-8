@@ -9,8 +9,8 @@ PREFIX = /usr/local
 MANPREFIX = $(PREFIX)/share/man
 
 # Libraries and includes...
-LIBS = -lSDL2
-INCS = -I/usr/include/SDL2 -Isrc/
+LIBS = -lm `pkg-config --libs sdl2`
+INCS = -Isrc/ `pkg-config --cflags sdl2`
 
 # Flags...
 CPPFLAGS = -D_DEFAULT_SOURCE \

@@ -13,6 +13,7 @@
 #include "core/keypad.h"
 #include "core/cpu.h"
 #include "core/opcode.h"
+#include "core/audio.h"
 #include "utils/auxfun.h"
 
 #define CHIP8_TIMER_FREQ (1.0f / 60.0f) /**< 60Hz timer frequency. */
@@ -80,7 +81,7 @@ static chip8_error chip8_cpu_getdelta(chip8_cpu *cpu, float *delta)
 }
 
 chip8_error chip8_cpu_init(chip8_cpu **cpu, chip8_video *video,
-		           chip8_keypad *keypad, unsigned int opnum)
+		           chip8_keypad *keypad, chip8_audio *audio, unsigned int opnum)
 {
 	chip8_error flag = CHIP8_EOK;
 	chip8_cpu *newcpu = NULL;
@@ -109,6 +110,7 @@ chip8_error chip8_cpu_init(chip8_cpu **cpu, chip8_video *video,
 
 	newcpu->video = video;
 	newcpu->keypad = keypad;
+	newcpu->audio = audio;
 	newcpu->cycle_freq = (float)(1.0f / opnum);
 	*cpu = newcpu;
 	goto done;
@@ -362,6 +364,13 @@ chip8_error chip8_cpu_cycle(chip8_cpu *cpu)
 			cpu->st -= 1;
 		}
 	}
+
+	if (cpu->st != 0) {
+		chip8_audio_play();
+	} else {
+		chip8_audio_pause();
+	}
+
 
 	cpu->cycle_ticks += delta;
 	while (cpu->cycle_ticks > cpu->cycle_freq) { 

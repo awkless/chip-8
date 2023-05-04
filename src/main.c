@@ -12,6 +12,7 @@
 #include "utils/error.h"
 #include "core/keypad.h"
 #include "core/video.h"
+#include "core/audio.h"
 #include "core/cpu.h"
 
 static void usage(void)
@@ -45,6 +46,7 @@ int main(int argc, char **argv)
 	char *rom = NULL;
 	chip8_video *video = NULL;
 	chip8_keypad *keypad = NULL;
+	chip8_audio *audio = NULL;
 	chip8_cpu *cpu = NULL;
 	chip8_error flag = CHIP8_EOK;
 	bool quit = false;
@@ -83,7 +85,11 @@ int main(int argc, char **argv)
 	if (flag != CHIP8_EOK)
 		chip8_die(flag);
 
-	flag = chip8_cpu_init(&cpu, video, keypad, freq);
+	flag = chip8_audio_init(&audio);
+	if (flag != CHIP8_EOK)
+		chip8_die(flag);
+
+	flag = chip8_cpu_init(&cpu, video, keypad, audio, freq);
 	if (flag != CHIP8_EOK)
 		chip8_die(flag);
 
@@ -105,6 +111,7 @@ int main(int argc, char **argv)
 	free(rom);
 	chip8_keypad_free(keypad);
 	chip8_video_free(video);
+	chip8_audio_free(audio);
 	chip8_cpu_free(cpu);
 	return 0;
 }
