@@ -128,55 +128,58 @@ void chip8_opcode_8XY4(chip8_cpu *cpu)
 void chip8_opcode_8XY5(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	uint8_t y = (cpu->opcode & 0x00F0) >> 4;	
+	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
 	if (cpu->v[x] > cpu->v[y])
 	{
-        	cpu->v[0x0F] = false; 
+        	cpu->v[0x0F] = true; 
 	}
 	else
 	{
-        	cpu->v[0x0F] = true;
+        	cpu->v[0x0F] = false;
 	}
-	
+
 	cpu->v[x] = cpu->v[x] - cpu->v[y];
 }
 
-//added
 void chip8_opcode_8XY6(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
-	cpu->v[0x0F] = cpu->v[y] & 0x01;
-	cpu->v[x] = cpu->v[y] / 2;
+
+	if (cpu->v[x] & 0x1)
+		cpu->v[0xf] = 1;
+	else
+		cpu->v[0xf] = 0;
+
+	cpu->v[x] = cpu->v[x] >> 1;
 }
 
-//added
 void chip8_opcode_8XY7(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
 	uint8_t y = (cpu->opcode & 0x00F0) >> 4;	
 	if (cpu->v[y] > cpu->v[x])
 	{
-        	cpu->v[0x0F] = false; 
+        	cpu->v[0x0F] = true; 
 	}
 	else
 	{
-        	cpu->v[0x0F] = true;
+        	cpu->v[0x0F] = false;
 	}
-	
 	cpu->v[x] = cpu->v[y] - cpu->v[x];
 }
 
-//added
 void chip8_opcode_8XYE(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	uint8_t y = (cpu->opcode & 0x00F0) >> 4;
-	cpu->v[0x0F] = cpu->v[y] & 0x80;
-	cpu->v[x] = cpu->v[y] * 2;
+
+	if (cpu->v[x] & 0x80)
+		cpu->v[0xf] = 1;
+	else
+		cpu->v[0xf] = 0;
+
+	cpu->v[x] = cpu->v[x] << 1;
 }
 
-//added
 void chip8_opcode_9XY0(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
@@ -194,11 +197,11 @@ void chip8_opcode_ANNN(chip8_cpu *cpu)
 	chip8_debugx("opcode ANNN - %04X\n", cpu->opcode);
 }
 
-//added
 void chip8_opcode_BNNN(chip8_cpu *cpu)
 {
 	uint16_t nnn = cpu->opcode & 0x0FFF;
 	cpu->pc = cpu->v[0] + nnn;
+	chip8_debugx("BNNN PC (%d) = V0 (%d) + NNN (%d)\n", cpu->pc, cpu->v[0], nnn);
 }
 
 void chip8_opcode_CXNN(chip8_cpu *cpu)
@@ -305,23 +308,18 @@ void chip8_opcode_FX33(chip8_cpu *cpu)
 	chip8_debug("opcode FX33");
 }
 
-//added
 void chip8_opcode_FX55(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	for(int reg = 0; reg <= x; ++reg) {
+	for(unsigned int reg = 0; reg <= x; reg++) {
 		cpu->memory[cpu->i + reg] = cpu->v[reg];
 	}
-	cpu->i = cpu->i + x + 1;
 }
 
-//added
 void chip8_opcode_FX65(chip8_cpu *cpu)
 {
 	uint8_t x = (cpu->opcode & 0x0F00) >> 8;
-	for(int reg = 0; reg <= x; ++reg) {
+	for(unsigned int reg = 0; reg <= x; reg++) {
 		cpu->v[reg] = cpu->memory[cpu->i + reg];
 	}
-	
-	cpu->i = cpu->i + x + 1;
 }
