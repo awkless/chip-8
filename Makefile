@@ -4,7 +4,7 @@
 include config.mk
 
 # Uncomment for debug tracing...
-#DEBUG = -DDEBUG_TRACE
+DEBUG = -DDEBUG_TRACE
 
 # CHIP-8 source code...
 BIN_SRCS = src/utils/error.c \
