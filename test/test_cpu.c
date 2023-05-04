@@ -10,6 +10,7 @@
 #include "core/cpu.h"
 #include "core/keypad.h"
 #include "core/video.h"
+#include "core/audio.h"
 #include "tap.h"
 
 #define DEFAULT_TEST_ROM "test/roms/stub.ch8" /* Default ROM for testing. */
@@ -54,13 +55,13 @@ static void test_chip8_cpu_reset(void)
  *   2. chip8_cpu_init() loads fontmap correctly.
  */
 static void test_chip8_cpu_init(chip8_cpu *cpu, chip8_video *video,
-		                chip8_keypad *keys)
+		                chip8_keypad *keys, chip8_audio *audio)
 {
-	cmp_ok(chip8_cpu_init(NULL, NULL, NULL, 0), "==", CHIP8_EINVAL,
+	cmp_ok(chip8_cpu_init(NULL, NULL, NULL, NULL, 0), "==", CHIP8_EINVAL,
 	       "chip8_cpu_init() detects NULL CPU");
-	cmp_ok(chip8_cpu_init(&cpu, video, NULL, 0), "==", CHIP8_EINVAL,
+	cmp_ok(chip8_cpu_init(&cpu, video, NULL, NULL, 0), "==", CHIP8_EINVAL,
 	       "chip8_cpu_init() detects NULL keypad");
-	cmp_ok(chip8_cpu_init(&cpu, NULL, keys, 0), "==", CHIP8_EINVAL,
+	cmp_ok(chip8_cpu_init(&cpu, NULL, keys, NULL, 0), "==", CHIP8_EINVAL,
 	       "chip8_cpu_init() detects NULL video");
 	cmp_mem(cpu->memory, EXPECTED_FONTMAP, chip8_arrsize(EXPECTED_FONTMAP),
 		"chip8_cpu_init() loads fontmap correctly");
@@ -118,6 +119,7 @@ int main(void)
 {
 	chip8_video *video = NULL;
 	chip8_keypad *keys = NULL;
+	chip8_audio *audio = NULL;
 	chip8_cpu *cpu = NULL;
 	chip8_error flag = CHIP8_EOK;
 	
@@ -129,13 +131,13 @@ int main(void)
 	if (keys == NULL)
 		BAIL_OUT("failed to create keypad system");
 
-	flag = chip8_cpu_init(&cpu, video, keys, 0);
+	flag = chip8_cpu_init(&cpu, video, keys, audio, 0);
 	if (flag != CHIP8_EOK)
 		BAIL_OUT("failed to create cpu system");
 
 	plan(10);
 	test_chip8_cpu_reset();
-	test_chip8_cpu_init(cpu, video, keys);
+	test_chip8_cpu_init(cpu, video, keys, audio);
 	test_chip8_cpu_romload(cpu);
 	test_chip8_cpu_cycle();
 	done_testing();
