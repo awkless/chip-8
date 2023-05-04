@@ -9,6 +9,7 @@
 
 #include "core/video.h"
 #include "core/keypad.h"
+#include "core/audio.h"
 #include "utils/error.h"
 
 #define CHIP8_RAM_SIZE   0x1000 /**< Size of CHIP-8 RAM. */
@@ -32,6 +33,7 @@ typedef struct {
 	uint16_t opcode;                  /**< 16-bit current opcode. */
 	chip8_video *video;               /**< Video context. */
 	chip8_keypad *keypad;             /**< Keypad context. */
+	chip8_audio *audio;               /**< Audio context. */
 	uint64_t ticks;                   /**< Current total tick rate. */
 	float timer_ticks;                /**< Current timer tick rate. */
 	float cycle_ticks;                /**< Current opcode cycle ticks. */
@@ -55,7 +57,7 @@ typedef struct {
  * @return 0 (#CHIP8_EOK) for success or #chip8_error code for failure.
  */
 chip8_error chip8_cpu_init(chip8_cpu **cpu, chip8_video *video,
-		           chip8_keypad *keypad, unsigned int opnum);
+		           chip8_keypad *keypad, chip8_audio *audio, unsigned int opnum);
 
 /**
  * @brief Load rom data into CHIP-8 CPU context.
