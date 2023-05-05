@@ -186,3 +186,12 @@ we need to run the Corax89 ROM for this purpose.
 Acceptance Test: Corax89 ROM states that all opcodes are implemented correctly.
 
 Effort Estimation: 1 person-hours
+
+## 8. Implement Sound System
+
+As a developer we need to setup the sound system. The emulator should beep when
+the sound timer is equal to zero.
+
+Acceptance Test: Emulator beeps when sound timer is not equal to zero.
+
+Effort Estimation: 2 person-hours
