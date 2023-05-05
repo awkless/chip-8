@@ -3,6 +3,6 @@ Upstream-Name: chip-8
 Upstream-Contact: Jason Pena <jasonpena@awkless.com>
 Source: https://github.com/awkless/chip-8
 
-Files: test/roms/*
+Files: test/roms/* games/*
 Copyright: 2023 Jason Pena
 License: MIT
