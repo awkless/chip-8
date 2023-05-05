@@ -24,11 +24,11 @@ project.
 
 # [Design Document]
 
-TODO
+Provide details about how the CHIP-8 emulator is implemented.
 
 # [Test Report]
 
-TODO
+Provide information about how the project was tested.
 
 [Problem Statement]: https://awkless.github.io/chip-8/problem
 [User Stories]: https://awkless.github.io/chip-8/userstories
