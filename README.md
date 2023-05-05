@@ -22,7 +22,7 @@ If you want to know about the development of this project then follow this URL
 Perform the following in the terminal:
 
 ```
-# chip-8 <rom>
+# chip-8 -l <rom>
 ```
 
 Where `<rom>` is any proper Chip-8 ROM file that you want to play. This
@@ -46,6 +46,16 @@ A 0 B F
 
 When you load a ROM a new window will pop up so you can play your
 Chip-8 game using the keyboard controls labeled above.
+
+The `games` directory contains some sample CHIP-8 roms that you can play around
+with in the project. If you forget how to use the emulator then just run the
+following into your terminal:
+
+```
+# chip-8 -h
+```
+
+for a simple help message.
 
 ## Installation
 
